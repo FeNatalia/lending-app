@@ -63,6 +63,7 @@ const AddNew = () => {
         placeholder="add item name"
         value={item.name}
         onChange={e => {
+          console.log(e.target);
           const { value } = e.target;
           setItem({...item, name: value });
           setErrors([]); 
