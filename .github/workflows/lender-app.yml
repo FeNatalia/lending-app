@@ -2,10 +2,12 @@ name: deploy to heroku
 
 on:
   pull_request:
-    types: [merged]
+    types: [closed]
 
 jobs:
-  client-set-up-and-testing:
+  merge_job:
+    # this job will only run if the PR has been merged
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
