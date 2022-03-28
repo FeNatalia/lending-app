@@ -18,7 +18,7 @@ jobs:
       - name: build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_KEY }}
-        run: heroku container:push -a alending-app-codezilla web
+        run: heroku container:push -a lending-app-codezilla web
 
       - name: build and release
         env:
