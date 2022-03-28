@@ -1,11 +1,13 @@
 import React from 'react'
+import Categories from '../components/Categories';
 import SearchBar from '../components/SearchBar'
 
 const Home = () => {
   return (
     <>
-      <div>Home</div>
+      <h2>Home</h2>
       <SearchBar />
+      <Categories />
     </>
   )
 }

@@ -10,6 +10,7 @@ const SearchBar = () => {
         <option value="Uppsala">Uppsala</option>
         <option value="Lund">Lund</option>
       </select>
+      <button type="submit" >Search</button>
     </form>
   )
 }
