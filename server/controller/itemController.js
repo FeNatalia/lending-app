@@ -8,6 +8,13 @@ const addItem = (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 };
 
+const getAllItems = (req, res, next) => {
+  return Item.find()
+    .then((result) => res.json(result))
+    .catch((err) => next(err));
+};
+
 module.exports = {
   addItem,
+  getAllItems,
 };
