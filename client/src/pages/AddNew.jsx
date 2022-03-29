@@ -50,54 +50,41 @@ const AddNew = () => {
     }
   };
 
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    setItem({ ...item, [name]: value });
+    setErrors([]);
+    setSuceesMessage("");
+  };
+
   return (
     <div>
       Add New Item
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          name="name"
           placeholder="add item name"
           value={item.name}
-          onChange={(e) => {
-            const { value } = e.target;
-            setItem({ ...item, name: value });
-            setErrors([]);
-            setSuceesMessage("");
-          }}
+          onChange={handleChange}
         />
         <input
           type="text"
+          name="description"
           placeholder="add description"
           value={item.description}
-          onChange={(e) => {
-            const { value } = e.target;
-            setItem({ ...item, description: value });
-            setErrors([]);
-            setSuceesMessage("");
-          }}
+          onChange={handleChange}
         />
         <input
           type="text"
+          name="image"
           placeholder="add image link"
           value={item.image}
-          onChange={(e) => {
-            const { value } = e.target;
-            setItem({ ...item, image: value });
-            setErrors([]);
-            setSuceesMessage("");
-          }}
+          onChange={handleChange}
         />
 
         <label>What Is The Category ?</label>
-        <select
-          value={item.category}
-          onChange={(e) => {
-            const { value } = e.target;
-            setItem({ ...item, category: value });
-            setErrors([]);
-            setSuceesMessage("");
-          }}
-        >
+        <select value={item.category} name="category" onChange={handleChange}>
           <option value=""> {""}Select a category</option>
           <option value="Electronics">Electronics</option>
           <option value="Tools">Tools</option>
@@ -106,15 +93,7 @@ const AddNew = () => {
           <option value="Renovation">Renovation</option>
         </select>
         <label>Choose Your City?</label>
-        <select
-          value={item.city}
-          onChange={(e) => {
-            const { value } = e.target;
-            setItem({ ...item, city: value });
-            setErrors([]);
-            setSuceesMessage("");
-          }}
-        >
+        <select value={item.city} name="city" onChange={handleChange}>
           <option value="">Cities</option>
           <option value="Stockholm">Stockholm</option>
           <option value="Malmo">Malmo</option>
