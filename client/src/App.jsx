@@ -6,6 +6,7 @@ import AddNew from "./pages/AddNew";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Feed from "./pages/Feed";
+import "./styles/style.css";
 
 const App = () => {
   return (
