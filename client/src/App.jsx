@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer";
-import Navigation from "./components/Navigation";
-import About from "./pages/About";
-import AddNew from "./pages/AddNew";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Feed from "./pages/Feed";
-import "./styles/style.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
+import About from './pages/About';
+import AddNew from './pages/AddNew';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Feed from './pages/Feed';
+import './styles/style.css';
 
 const App = () => {
   return (
