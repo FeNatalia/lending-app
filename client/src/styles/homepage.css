@@ -39,6 +39,8 @@
 .navbar {
   width: 100%;
   box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+  position: sticky;
+  position: -webkit-sticky;
 }
 
 .menu {
@@ -49,14 +51,17 @@
   justify-content: space-between;
   align-items: center;
   height: 62px;
+  position: fixed;
 }
 
 .menu__items {
   display: flex;
+  position: fixed;
   background-color: wheat;
 }
 
-.menu__links {
+.menu__links,
+.menu__links--mobile {
   list-style: none;
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
@@ -137,8 +142,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 40px;
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
 }
@@ -175,10 +179,6 @@
 
 .menu__checkbox:checked ~ .menu-lines .menu-lines--line3 {
   transform: rotate(-45deg);
-}
-
-.menu__checkbox:checked ~ .navbar__logo {
-  display: none;
 }
 
 .hero {
