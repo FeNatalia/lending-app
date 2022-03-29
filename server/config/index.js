@@ -12,4 +12,4 @@ const addItem = async (itemData) => {
   return item;
 };
 
-module.exports = {addItem}
+module.exports = { addItem };

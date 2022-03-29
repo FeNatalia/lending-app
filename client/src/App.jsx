@@ -5,6 +5,7 @@ import About from "./pages/About";
 import AddNew from "./pages/AddNew";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import Feed from "./pages/Feed";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/add-item" element={<AddNew />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/feed" element={<Feed />} />
       </Routes>
       <Footer />
     </Router>
