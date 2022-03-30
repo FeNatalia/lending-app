@@ -1,0 +1,88 @@
+.card__item {
+  width: 80%;
+  padding: 15px;
+  background-color: white;
+  margin: 15px;
+  border-radius: 5px;
+}
+.card__img--wrap {
+  width: 260px;
+  height: 260px;
+  background-color: #fff;
+  border: 1px solid #c9e4c5;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+.card__img--top {
+  width: 100%;
+  display: block;
+}
+.card__item--content {
+  text-align: center;
+  line-height: 17px;
+  font-size: 17px;
+  border-radius: 4px;
+  margin: 15px;
+}
+.card__item--name {
+  font-weight: 500;
+  font-size: 18px;
+  color: #362706;
+  margin: 15px 0 10px;
+}
+.card__item--description {
+  font-style: medium;
+  text-align: center;
+  margin: 10px;
+  color: #464e2e;
+}
+.card__item--city {
+  font-style: medium;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  margin: 5px;
+  color: #464e2e;
+}
+.card__item--category {
+  font-style: medium;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  margin: 5px;
+  color: #464e2e;
+}
+.card__item--btn {
+  font-size: 17px;
+  text-align: center;
+  width: 260px;
+  height: 30px;
+  border-radius: 3px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  line-height: 30px;
+  color: #362706;
+  border: 1px solid #c9e4c5;
+}
+.card__item--btn:hover {
+  background-color: #c9e4c5;
+}
+@media only screen and (min-width: 768px) {
+  .card__item {
+    width: 25%;
+    padding: 15px 10px;
+  }
+  .card__item--name {
+    font-size: 24px;
+  }
+  .card__item--description {
+    font-size: 24px;
+  }
+  .card__item--city {
+    font-size: 16px;
+  }
+  .card__item--category {
+    font-size: 16px;
+  }
+}

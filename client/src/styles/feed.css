@@ -1,0 +1,18 @@
+.feed__card--group {
+  background-color: #fdf6ec;
+  display: flex;
+  clear: both;
+  height: auto;
+  justify-content: center;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+@media only screen and (min-width: 768px) {
+  .feed__card--group {
+    display: flex;
+    clear: both;
+    height: auto;
+    flex-direction: row;
+    flex-flow: wrap;
+  }
+}
