@@ -5,34 +5,34 @@ import { addDoc, setDoc, updateDoc, getDoc } from 'firebase/firestore/lite'; // 
 // Project files
 import { fireStoreInstance } from '../scripts/firebase';
 
-export async function createDocumentWithId(path, id, data) {
+export const createDocumentWithId = async (path, id, data) => {
   const documentReference = doc(fireStoreInstance, path, id);
   await setDoc(documentReference, data);
 
   return id;
-}
+};
 
-export async function createDocument(path, data) {
+export const createDocument = async (path, data) => {
   const collectionReference = collection(fireStoreInstance, path);
   const documentReference = await addDoc(collectionReference, data);
 
   return documentReference.id;
-}
+};
 
-export async function getDocument(path, id) {
+export const getDocument = async (path, id) => {
   const documentReference = doc(fireStoreInstance, path, id);
   const document = await getDoc(documentReference);
 
   return { id: document.id, ...document.data() };
-}
+};
 
-export async function updateDocument(path, data) {
+export const updateDocument = async (path, data) => {
   const documentReference = doc(fireStoreInstance, path, data.id);
 
   await updateDoc(documentReference, data);
-}
+};
 
-export async function getCollection(path) {
+export const getCollection = async path => {
   const collectionReference = collection(fireStoreInstance, path);
   const snapshot = await getDocs(collectionReference);
   const list = snapshot.docs.map(doc => {
@@ -40,4 +40,4 @@ export async function getCollection(path) {
   });
 
   return list;
-}
+};

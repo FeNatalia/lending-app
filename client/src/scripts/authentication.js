@@ -7,7 +7,7 @@ import {
 // Project files
 import { authInstance } from './firebase';
 
-export async function createAccount(email, password) {
+export const createAccount = async (email, password) => {
   const account = { isCreated: false, payload: '' };
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -23,9 +23,9 @@ export async function createAccount(email, password) {
   }
 
   return account;
-}
+};
 
-export async function signIn(email, password) {
+export const signIn = async (email, password) => {
   const account = { isLogged: false, payload: '' };
   try {
     const userCredential = await signInWithEmailAndPassword(
@@ -41,4 +41,4 @@ export async function signIn(email, password) {
   }
 
   return account;
-}
+};

@@ -22,14 +22,6 @@ export const SignUp = () => {
     setForm({ ...form, ...field });
   };
 
-  const onSubmit = async event => {
-    event.preventDefault();
-    setErrorMessage('');
-    const account = await createAccount(form.email, form.password);
-
-    account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
-  };
-
   const onSuccess = async uid => {
     const newUser = { name: form.name, isAdmin: false };
     await createDocumentWithId('users', uid, newUser);
@@ -40,6 +32,15 @@ export const SignUp = () => {
   const onFailure = message => {
     setErrorMessage(message);
   };
+
+  const onSubmit = async event => {
+    event.preventDefault();
+    setErrorMessage('');
+    const account = await createAccount(form.email, form.password);
+
+    account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
+  };
+
   // Components
   const InputFields = fields.map(item => (
     <InputField
@@ -55,14 +56,14 @@ export const SignUp = () => {
       <header>
         <div className="signup-logo">Logo</div>
         <div className="signin-link">
-          <Link to="/">Sign In</Link>
+          <Link to="/login">Sign In</Link>
         </div>
       </header>
       <div className="signup-page-content">
         <div className="signup-form">
           <h2>Create an account to start using LendingApp</h2>
           <h3>Just this step and you're finished! We hate paperwork, too.</h3>
-          <form onSubmit={onSubmit} className="form">
+          <form onSubmit={onSubmit} className="form-sign">
             {InputFields}
             <p>{errorMassage}</p>
             <button>Sign up</button>

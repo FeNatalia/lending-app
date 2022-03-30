@@ -9,7 +9,7 @@ import { signIn } from '../scripts/authentication';
 import { getDocument } from '../scripts/fireStore';
 import { useAuth } from '../state/AuthProvider';
 
-export default function Login() {
+const Login = () => {
   // Global state
   const { setUser, setIsLogged } = useAuth();
   const navigate = useNavigate();
@@ -19,29 +19,29 @@ export default function Login() {
   const [errorMassage, setErrorMessage] = useState('');
 
   // Methods
-  function onChange(key, value) {
+  const onChange = (key, value) => {
     const field = { [key]: value };
     setForm({ ...form, ...field });
-  }
+  };
 
-  async function onSubmit(event) {
+  const onSubmit = async event => {
     event.preventDefault();
     setErrorMessage('');
     const account = await signIn(form.email, form.password);
     account.isLogged ? onSuccess(account.payload) : onFailure(account.payload);
-  }
+  };
 
-  async function onSuccess(uid) {
+  const onSuccess = async uid => {
     const document = await getDocument('users', uid);
     setUser(document);
     setIsLogged(true);
     localStorage.setItem('uid', uid);
     navigate('/');
-  }
+  };
 
-  function onFailure(message) {
+  const onFailure = message => {
     setErrorMessage(message);
-  }
+  };
 
   // Components
   const InputFields = fields.map(item => (
@@ -70,4 +70,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default Login;

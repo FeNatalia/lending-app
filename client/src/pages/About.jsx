@@ -11,7 +11,7 @@ const About = () => {
       </header>
       <section className="about__body">
         <div className="about__body-card">
-          <img src={about1} alt="planet" />
+          <img src={about1} alt="planet" loading="lazy" />
           <h2>About Lending App</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
@@ -41,7 +41,7 @@ const About = () => {
           </p>
         </div>
         <div className="about__body-card">
-          <img src={about3} alt="two people" />
+          <img src={about3} alt="two people" loading="lazy" />
           <h2>The company behind</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
