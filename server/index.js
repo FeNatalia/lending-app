@@ -17,10 +17,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.get('/api', (req, res) => {
+app.get('/api', (_req, res) => {
   return res.json({ message: 'You have reached the Lender API' });
 });
 app.use('/api/items', itemRoutes);
+app.use('*', (_req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 app.use(errorHandler);
 app.use(globalErrorHandler);
