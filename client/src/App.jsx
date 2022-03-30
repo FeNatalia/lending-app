@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Feed from './pages/Feed';
 import './styles/style.css';
+import SignUp from './pages/SignUp';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/add-item" element={<AddNew />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/feed" element={<Feed />} />
       </Routes>
       <Footer />
