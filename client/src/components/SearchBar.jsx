@@ -1,4 +1,9 @@
+import React, { useEffect, useState, useContext } from 'react';
+import { DataContext } from '../state/DataProvider';
+
 const SearchBar = () => {
+  const { setCity, setCategory, city } = useContext(DataContext);
+
   return (
     <form className="form">
       <label className="form__label" htmlFor="search">
@@ -14,7 +19,12 @@ const SearchBar = () => {
       <label className="form__label" htmlFor="options">
         Select a location
       </label>
-      <select defaultValue="" className="form__select" id="options">
+      <select
+        defaultValue=""
+        className="form__select"
+        id="options"
+        onChange={e => setCity(e.target.value)}
+      >
         <option disabled hidden value="">
           Cities...
         </option>
