@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import Category from './shared/Category';
 
 const Categories = () => {
   return (
-    <div>
-        <h3>Categories</h3> 
-        <Category />
-    </div>
-  )
-}
+    <section className="categories">
+      <h3>Categories</h3>
+      <Category />
+    </section>
+  );
+};
 
 export default Categories;

@@ -35,13 +35,24 @@
 }
 
 .form__search {
+  border: 2px solid rgba(128, 128, 128, 0.5);
   border-radius: 0.3rem;
   padding: 0.5rem;
 }
 
+.form__search:focus {
+  outline: 2px solid #acb992;
+  border-color: #acb99200;
+}
+
 .form__select {
+  border: 2px solid rgba(128, 128, 128, 0.5);
   border-radius: 0.3rem;
   padding: 0.5rem;
+}
+
+.form__select:focus {
+  border-color: #acb992;
 }
 
 .form__select:invalid {

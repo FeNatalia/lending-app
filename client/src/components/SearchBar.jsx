@@ -14,9 +14,9 @@ const SearchBar = () => {
       <label className="form__label" htmlFor="options">
         Select a location
       </label>
-      <select className="form__select" id="options" required>
+      <select defaultValue="" className="form__select" id="options" required>
         <option disabled hidden value="">
-          Cities
+          Cities...
         </option>
         <option value="Stockholm">Stockholm</option>
         <option value="Malmo">Malmo</option>
