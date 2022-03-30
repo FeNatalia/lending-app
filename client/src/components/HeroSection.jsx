@@ -1,4 +1,4 @@
-import background from '../assets/lend-borrow.jpg';
+import background from '../static/lend-borrow.jpg';
 import SearchBar from './SearchBar';
 
 const HeroSection = () => {
@@ -16,4 +16,5 @@ const HeroSection = () => {
     </header>
   );
 };
+
 export default HeroSection;
