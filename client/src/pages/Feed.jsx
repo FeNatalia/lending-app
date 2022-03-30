@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemCard from '../components/shared/ItemCard';
+import { DataContext } from '../state/DataProvider';
 import { getAllItems, getByCityName } from '../api';
 
 const Feed = ({ type }) => {
   const [items, setItems] = useState([]);
+  const { setCity, city } = useContext(DataContext);
 
   useEffect(() => {
     switch (type) {
@@ -15,21 +17,16 @@ const Feed = ({ type }) => {
         break;
 
       case 'items-by-city':
-        getByCityName().then(res => {
+        getByCityName(city).then(res => {
           setItems(res);
+          setCity();
         });
         break;
-
-      // case 'items-category':
-      //   getWatchedMovies().then(res => {
-      //     setMoviesItems(res);
-      //   });
-      //   break;
 
       default:
         break;
     }
-  }, [type]);
+  }, [type, city, setCity]);
 
   return (
     <div>

@@ -1,11 +1,20 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DataContext } from '../state/DataProvider';
 
 const SearchBar = () => {
-  const { setCity, setCategory, city } = useContext(DataContext);
+  const { setCity, city } = useContext(DataContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    if (city) {
+      return navigate('/items-by-city');
+    }
+    return navigate('/feed');
+  };
 
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <label className="form__label" htmlFor="search">
         Search
       </label>
