@@ -11,3 +11,7 @@ export const getAllItems = async () => {
   const res = await axios.get(`${base}/api/items`);
   return res.data;
 };
+export const getByCityName = async city => {
+  const res = await axios.get(`${base}/api/items/?city=${city}`);
+  return res.data;
+};

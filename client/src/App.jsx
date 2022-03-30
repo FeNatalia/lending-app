@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DataProvider } from './state/DataProvider';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import About from './pages/About';
@@ -11,18 +12,28 @@ import SignUp from './pages/SignUp';
 
 const App = () => {
   return (
-    <Router>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/add-item" element={<AddNew />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/feed" element={<Feed />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <DataProvider>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/add-item" element={<AddNew />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/feed" element={<Feed type="all-items" />} />
+          <Route
+            path="/items-by-city"
+            element={<Feed type="items-by-city" />}
+          />
+          <Route
+            path="/items-category"
+            element={<Feed type="items-category" />}
+          />
+        </Routes>
+        <Footer />
+      </Router>
+    </DataProvider>
   );
 };
 

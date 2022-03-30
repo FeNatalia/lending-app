@@ -1,6 +1,20 @@
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { DataContext } from '../state/DataProvider';
+
 const SearchBar = () => {
+  const { setCity, city } = useContext(DataContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    if (city) {
+      return navigate('/items-by-city');
+    }
+    return navigate('/feed');
+  };
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={handleSubmit}>
       <label className="form__label" htmlFor="search">
         Search
       </label>
@@ -14,7 +28,12 @@ const SearchBar = () => {
       <label className="form__label" htmlFor="options">
         Select a location
       </label>
-      <select defaultValue="" className="form__select" id="options">
+      <select
+        defaultValue=""
+        className="form__select"
+        id="options"
+        onChange={e => setCity(e.target.value)}
+      >
         <option disabled hidden value="">
           Cities...
         </option>

@@ -1,16 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemCard from '../components/shared/ItemCard';
-import { getAllItems } from '../api';
+import { DataContext } from '../state/DataProvider';
+import { getAllItems, getByCityName } from '../api';
 
-const Feed = () => {
+const Feed = ({ type }) => {
   const [items, setItems] = useState([]);
+  const { setCity, city } = useContext(DataContext);
 
   useEffect(() => {
-    getAllItems().then(res => {
-      setItems(res);
-    });
-  }, []);
+    switch (type) {
+      case 'all-items':
+        getAllItems().then(res => {
+          setItems(res);
+        });
+        break;
+
+      case 'items-by-city':
+        getByCityName(city).then(res => {
+          setItems(res);
+          setCity();
+        });
+        break;
+
+      default:
+        break;
+    }
+  }, [type, city, setCity]);
 
   return (
     <div>
