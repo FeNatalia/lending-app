@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DataContext } from '../contexts/DataProvider';
 
 const SearchBar = () => {
-  const [keyword, setKeyword] = useState('');
+  const { keyword, setKeyword } = useContext(DataContext);
   const { setCity, city } = useContext(DataContext);
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const SearchBar = () => {
         onChange={e => setCity(e.target.value)}
       >
         <option disabled hidden value="">
-          Cities...
+        Sweden...
         </option>
         <option value="Stockholm">Stockholm</option>
         <option value="Malmo">Malmo</option>
@@ -53,4 +53,5 @@ const SearchBar = () => {
     </form>
   );
 };
+
 export default SearchBar;
