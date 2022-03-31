@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DataProvider } from './contexts/DataProvider';
-import { ModalProvider } from './contexts/ModalProvider';
-import Footer from './components/Footer';
-import Navigation from './components/Navigation';
-import About from './pages/About';
-import AddNew from './pages/AddNew';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Feed from './pages/Feed';
-import './styles/style.css';
-import SignUp from './pages/SignUp';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { DataProvider } from "./contexts/DataProvider";
+import { ModalProvider } from "./contexts/ModalProvider";
+import Footer from "./components/Footer";
+import Navigation from "./components/Navigation";
+import About from "./pages/About";
+import AddNew from "./pages/AddNew";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Feed from "./pages/Feed";
+import "./styles/style.css";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (

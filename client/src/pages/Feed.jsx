@@ -17,7 +17,6 @@ const Feed = ({ type }) => {
           getAllItems().then((res) => {
             if (keyword.length > 0) {
               const filtered = res.filter((e) => e.name.includes(keyword));
-              console.log("66666666", filtered);
               setItems(filtered);
               hasFetchedData.current = true;
               setKeyword("");
