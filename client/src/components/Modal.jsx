@@ -8,7 +8,7 @@ const Modal = ({ children }) => {
 
   const handleClick = () => {
     setVisibility(false);
-    navigate('/');
+    navigate('/login');
   };
 
   return (
@@ -25,7 +25,7 @@ const Modal = ({ children }) => {
         </span>
         <div className="popup__content">{children}</div>
         <button className="button--popup" type="submit" onClick={handleClick}>
-          ok
+          login
         </button>
       </div>
     </div>
