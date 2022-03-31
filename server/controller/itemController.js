@@ -1,4 +1,5 @@
 const Item = require('../model/item');
+const { notFound } = require('./errorHandler');
 
 const getByCityName = (req, res, next) => {
   Item.find({ city: req.query.city })
