@@ -1,14 +1,14 @@
 // NPM Packages
 import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ModalContext } from '../state/ModalProvider';
+import { ModalContext } from '../contexts/ModalProvider';
 
 // Project files
 import InputField from '../components/InputField';
 import Modal from '../components/Modal';
 import fields from '../data/fields-signup.json';
-import { createAccount } from '../scripts/authentication';
-import { createDocumentWithId } from '../scripts/fireStore';
+import { createAccount } from '../auth/authentication';
+import { createDocumentWithId } from '../auth/fireStore';
 
 export const SignUp = () => {
   // Global state

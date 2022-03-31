@@ -5,9 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 // Project files
 import InputField from '../components/InputField';
 import fields from '../data/fields-login.json';
-import { signIn } from '../scripts/authentication';
-import { getDocument } from '../scripts/fireStore';
-import { useAuth } from '../state/AuthProvider';
+import { signIn } from '../auth/authentication';
+import { getDocument } from '../auth/fireStore';
+import { useAuth } from '../contexts/AuthProvider';
 
 const Login = () => {
   // Global state

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ModalContext } from '../state/ModalProvider';
+import { ModalContext } from '../contexts/ModalProvider';
 
 const Modal = ({ children }) => {
   const { visibility, setVisibility } = useContext(ModalContext);

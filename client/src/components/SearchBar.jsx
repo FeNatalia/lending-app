@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataContext } from '../state/DataProvider';
+import { DataContext } from '../contexts/DataProvider';
 
 const SearchBar = () => {
   const [keyword, setKeyword] = useState('');

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemCard from '../components/shared/ItemCard';
-import { DataContext } from '../state/DataProvider';
+import { DataContext } from '../contexts/DataProvider';
 import { getAllItems, getByCityName } from '../api';
 
 const Feed = ({ type }) => {

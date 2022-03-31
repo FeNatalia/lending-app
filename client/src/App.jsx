@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { DataProvider } from './state/DataProvider';
-import { ModalProvider } from './state/ModalProvider';
+import { DataProvider } from './contexts/DataProvider';
+import { ModalProvider } from './contexts/ModalProvider';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import About from './pages/About';
