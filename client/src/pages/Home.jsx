@@ -1,11 +1,12 @@
-import React from 'react';
-import Categories from '../components/Categories';
-import HeroSection from '../components/HeroSection';
+import React from "react";
+import Categories from "../components/Categories";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
   return (
     <>
       <HeroSection />
+      {console.log("the key", process.env.REACT_APP_FIREBASE_API_KEY)}
       <Categories />
     </>
   );
