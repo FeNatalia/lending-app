@@ -7,12 +7,21 @@ import { getAllItems, getByCityName } from '../api';
 const Feed = ({ type }) => {
   const [items, setItems] = useState([]);
   const { setCity, city } = useContext(DataContext);
+  const { keyword, setKeyword } = useContext(DataContext);
 
   useEffect(() => {
     switch (type) {
       case 'all-items':
         getAllItems().then(res => {
-          setItems(res);
+          if (keyword.length > 0){
+            const filtered =res.filter( e => e.name.includes(keyword))
+            console.log('66666666', filtered);
+            setItems(filtered)
+            setKeyword('')
+          } else {
+            setItems(res);
+          }
+          
         });
         break;
 
