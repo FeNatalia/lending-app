@@ -3,6 +3,7 @@ import Categories from "../components/Categories";
 import HeroSection from "../components/HeroSection";
 
 const Home = () => {
+  console.log(process.env);
   return (
     <>
       <HeroSection />

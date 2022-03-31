@@ -7,15 +7,3 @@ mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(console.log("Connected to DB"))
   .catch((err) => console.log(err.message));
-
-// const getCollectionByName = async (collectionName) => {
-//   await client.connect();
-//   const db = client.db("items");
-//   return db.collection(collectionName);
-// };
-
-// const createNewItem = async (item) => {
-//   const moviesCollection = await getCollectionByName("items");
-//   moviesCollection.insertOne(item);
-// };
-// module.exports = {createNewItem}
