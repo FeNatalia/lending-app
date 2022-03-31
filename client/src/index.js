@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AuthProvider } from './state/AuthProvider';
+import { AuthProvider } from './contexts/AuthProvider';
 import App from './App';
 
 ReactDOM.render(

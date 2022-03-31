@@ -1,16 +1,18 @@
 // NPM Packages
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { ModalContext } from '../contexts/ModalProvider';
 
 // Project files
 import InputField from '../components/InputField';
+import Modal from '../components/Modal';
 import fields from '../data/fields-signup.json';
-import { createAccount } from '../scripts/authentication';
-import { createDocumentWithId } from '../scripts/fireStore';
+import { createAccount } from '../auth/authentication';
+import { createDocumentWithId } from '../auth/fireStore';
 
 export const SignUp = () => {
   // Global state
-  const navigate = useNavigate();
+  const { setVisibility } = useContext(ModalContext);
 
   // Local state
   const [form, setForm] = useState({});
@@ -25,8 +27,7 @@ export const SignUp = () => {
   const onSuccess = async uid => {
     const newUser = { name: form.name, isAdmin: false };
     await createDocumentWithId('users', uid, newUser);
-    alert('Your account is successfully created, please login now');
-    navigate('/');
+    setVisibility(true);
   };
 
   const onFailure = message => {
@@ -52,25 +53,31 @@ export const SignUp = () => {
   ));
 
   return (
-    <div id="signup-page">
-      <header>
-        <div className="signup-logo">Logo</div>
-        <div className="signin-link">
-          <Link to="/login">Sign In</Link>
-        </div>
-      </header>
-      <div className="signup-page-content">
-        <div className="signup-form">
-          <h2>Create an account to start using LendingApp</h2>
-          <h3>Just this step and you're finished! We hate paperwork, too.</h3>
-          <form onSubmit={onSubmit} className="form-sign">
-            {InputFields}
-            <p>{errorMassage}</p>
-            <button>Sign up</button>
-          </form>
+    <>
+      <Modal>
+        <h2> Your account is successfully created</h2>
+        <h1>Please Login Now</h1>
+      </Modal>
+      <div id="signup-page">
+        <header>
+          <div className="signup-logo">Logo</div>
+          <div className="signin-link">
+            <Link to="/login">Sign In</Link>
+          </div>
+        </header>
+        <div className="signup-page-content">
+          <div className="signup-form">
+            <h2>Create an account to start using LendingApp</h2>
+            <h3>Just this step and you're finished! We hate paperwork, too.</h3>
+            <form onSubmit={onSubmit} className="form-sign">
+              {InputFields}
+              <p>{errorMassage}</p>
+              <button>Sign up</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

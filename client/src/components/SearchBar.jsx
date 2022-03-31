@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DataContext } from '../state/DataProvider';
+import { DataContext } from '../contexts/DataProvider';
 
 const SearchBar = () => {
+  const [keyword, setKeyword] = useState('');
   const { setCity, city } = useContext(DataContext);
   const navigate = useNavigate();
 
   const handleSubmit = () => {
+    setKeyword('');
     if (city) {
       return navigate('/items-by-city');
     }
@@ -23,6 +25,8 @@ const SearchBar = () => {
         className="form__search"
         type="text"
         name="search"
+        value={keyword}
+        onChange={e => setKeyword(e.target.value)}
         placeholder="what are you searching?"
       />
       <label className="form__label" htmlFor="options">
