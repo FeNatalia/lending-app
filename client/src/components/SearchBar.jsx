@@ -8,7 +8,6 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    console.log("Keyword", keyword);
     setKeyword((prev) => prev);
     if (city) {
       return navigate("/items-by-city");
