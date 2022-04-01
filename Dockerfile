@@ -18,4 +18,6 @@ RUN npm install
 
 COPY server/. .
 
+ENV ARG=${REACT_APP_FIREBASE_API_KEY}
+
 CMD ["npm", "start"]
