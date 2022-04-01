@@ -1,0 +1,31 @@
+name: deploy to heroku
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  merge_job:
+    # this job will only run if the PR has been merged
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: login to heroku container
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_KEY }}
+        run: heroku container:login
+
+      - name: set NODE_ENV variable
+        run: heroku config:set NODE_ENV=production -a lending-app-codezilla web
+
+      - name: build and push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_KEY }}
+        run: heroku container:push -a lending-app-codezilla web
+
+      - name: build and release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_KEY }}
+        run: heroku container:release -a lending-app-codezilla web
