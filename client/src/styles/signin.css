@@ -4,10 +4,14 @@
   margin: var(--space-medium);
 }
 
+#signin-page h1 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: white;
+}
+
 #signin-page {
-  background-color: gray;
-  background-size: cover;
-  background-position: center;
+  background-color: rgb(65, 65, 65);
   width: 100vw;
   height: 100vh;
   display: block;
@@ -26,12 +30,12 @@
   text-decoration: none;
 }
 
-#signin-page form {
+#signin-form {
   display: block;
 }
 
 #signin-page button {
-  width: 300px;
+  width: 200px;
   height: 45px;
   font-size: 16px;
   font-weight: bold;
@@ -44,18 +48,21 @@
 }
 
 #signin-page .auth-form {
+  margin-top: 30px;
+  display: grid;
+  justify-content: center;
   width: 300px;
   padding: 60px;
   background-color: rgba(0, 0, 0, 0.5);
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-#signin-page form small {
+#signin-form small {
   margin-right: var(--space-small);
   font-size: 16px;
 }
 
-#signin-page form p {
+#signin-form p {
   color: orange;
   margin-top: 0;
 }
@@ -66,7 +73,7 @@
 
 #signin-page .input-field input {
   background-color: #393838;
-  width: 280px;
+  width: 200px;
   height: 40px;
   font-size: 16px;
   padding-left: var(--space-medium);

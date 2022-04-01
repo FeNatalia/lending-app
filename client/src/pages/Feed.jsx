@@ -1,53 +1,41 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SearchBar from "../components/SearchBar";
 import ItemCard from "../components/shared/ItemCard";
+import { getItems } from "../api";
 import { DataContext } from "../contexts/DataProvider";
-import { getAllItems, getByCityName } from "../api";
 
-const Feed = ({ type }) => {
-  const hasFetchedData = useRef(false);
+const Feed = () => {
   const [items, setItems] = useState([]);
-  const { setCity, city } = useContext(DataContext);
+  const { city, setCity } = useContext(DataContext);
   const { keyword, setKeyword } = useContext(DataContext);
 
   useEffect(() => {
-    switch (type) {
-      case "all-items":
-        if (!hasFetchedData.current) {
-          getAllItems().then((res) => {
-            if (keyword.length > 0) {
-              const filtered = res.filter((e) => e.name.includes(keyword));
-              console.log("66666666", filtered);
-              setItems(filtered);
-              hasFetchedData.current = true;
-              setKeyword("");
-            } else {
-              setItems(res);
-              hasFetchedData.current = true;
-            }
-          });
-        }
-        break;
+    console.log("222");
+    getItems(keyword, city).then((res) => {
+      console.log("333");
+      setItems(res);
+    });
+  }, [city, keyword]);
 
-      case "items-by-city":
-        getByCityName(city).then((res) => {
-          setItems(res);
-          setCity();
-        });
-        break;
-
-      default:
-        break;
-    }
-  }, [type, city, setCity, keyword, setKeyword]);
+  // useEffect(() => {
+  //   console.log("111");
+  //   let search = window.location.search;
+  //   let params = new URLSearchParams(search);
+  //   let q = params.get("q");
+  //   let city = params.get("city");
+  //   setKeyword(q);
+  //   setCity(city);
+  // }, []);
 
   return (
-    <div>
+    <div className="feed">
       <SearchBar />
       <section className="feed__card--group">
-        {items.map((item) => (
-          <ItemCard key={item._id} item={item} />
-        ))}
+        {items.length === 0 ? (
+          <div>No item found!</div>
+        ) : (
+          items.map((item) => <ItemCard key={item._id} item={item} />)
+        )}
       </section>
     </div>
   );
