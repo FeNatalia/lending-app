@@ -1,7 +1,7 @@
-import React from 'react';
-import about1 from '../static/about-planet.jpg';
-import about2 from '../static/about-hands.svg';
-import about3 from '../static/about-people.svg';
+import React from "react";
+import about1 from "../static/about-planet.svg";
+import about2 from "../static/about-hands.svg";
+import about3 from "../static/about-people.svg";
 
 const About = () => {
   return (
