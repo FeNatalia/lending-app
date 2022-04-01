@@ -23,15 +23,7 @@ const App = () => {
             <Route path="/add-item" element={<AddNew />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/feed" element={<Feed type="all-items" />} />
-            <Route
-              path="/items-by-city"
-              element={<Feed type="items-by-city" />}
-            />
-            <Route
-              path="/items-category"
-              element={<Feed type="items-category" />}
-            />
+            <Route path="/feed" element={<Feed />} />
           </Routes>
           <Footer />
         </Router>

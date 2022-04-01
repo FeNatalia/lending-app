@@ -1,14 +1,14 @@
 // NPM Packages
-import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { ModalContext } from '../contexts/ModalProvider';
+import { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { ModalContext } from "../contexts/ModalProvider";
 
 // Project files
-import InputField from '../components/InputField';
-import Modal from '../components/Modal';
-import fields from '../data/fields-signup.json';
-import { createAccount } from '../auth/authentication';
-import { createDocumentWithId } from '../auth/fireStore';
+import InputField from "../components/InputField";
+import Modal from "../components/Modal";
+import fields from "../data/fields-signup.json";
+import { createAccount } from "../auth/authentication";
+import { createDocumentWithId } from "../auth/fireStore";
 
 export const SignUp = () => {
   // Global state
@@ -16,7 +16,7 @@ export const SignUp = () => {
 
   // Local state
   const [form, setForm] = useState({});
-  const [errorMassage, setErrorMessage] = useState('');
+  const [errorMassage, setErrorMessage] = useState("");
 
   // Methods
   const onChange = (key, value) => {
@@ -24,26 +24,26 @@ export const SignUp = () => {
     setForm({ ...form, ...field });
   };
 
-  const onSuccess = async uid => {
+  const onSuccess = async (uid) => {
     const newUser = { name: form.name, isAdmin: false };
-    await createDocumentWithId('users', uid, newUser);
+    await createDocumentWithId("users", uid, newUser);
     setVisibility(true);
   };
 
-  const onFailure = message => {
+  const onFailure = (message) => {
     setErrorMessage(message);
   };
 
-  const onSubmit = async event => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    setErrorMessage('');
+    setErrorMessage("");
     const account = await createAccount(form.email, form.password);
 
     account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
   };
 
   // Components
-  const InputFields = fields.map(item => (
+  const InputFields = fields.map((item) => (
     <InputField
       key={item.key}
       options={item}
@@ -59,20 +59,15 @@ export const SignUp = () => {
         <h1>Please Login Now</h1>
       </Modal>
       <div id="signup-page">
-        <header>
-          <div className="signup-logo">Logo</div>
-          <div className="signin-link">
-            <Link to="/login">Sign In</Link>
-          </div>
-        </header>
-        <div className="signup-page-content">
-          <div className="signup-form">
+        <div className="auth-content">
+          <div className="auth-form">
             <h2>Create an account to start using LendingApp</h2>
-            <h3>Just this step and you're finished! We hate paperwork, too.</h3>
-            <form onSubmit={onSubmit} className="form-sign">
+            <form id="signup-form" onSubmit={onSubmit} className="form-sign">
               {InputFields}
               <p>{errorMassage}</p>
               <button>Sign up</button>
+              <h3>Already have an account? </h3>
+              <Link to="/login">Sign In</Link>
             </form>
           </div>
         </div>

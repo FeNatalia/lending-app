@@ -1,19 +1,28 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
 import { DataContext } from "../contexts/DataProvider";
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = () => {
+const SearchBar = (homeSearch = false) => {
+  const { city, setCity } = useContext(DataContext);
   const { keyword, setKeyword } = useContext(DataContext);
-  const { setCity, city } = useContext(DataContext);
+  const [tempKeyword, setTempKeyword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    setKeyword((prev) => prev);
-    if (city) {
-      return navigate("/items-by-city");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setKeyword(tempKeyword);
+    setTempKeyword("");
+    if (homeSearch) {
+      return navigate("/feed");
     }
-    return navigate("/feed");
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     setKeyword("");
+  //     setCity("");
+  //   };
+  // }, []);
 
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -25,8 +34,8 @@ const SearchBar = () => {
         className="form__search"
         type="text"
         name="search"
-        value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
+        value={tempKeyword}
+        onChange={(e) => setTempKeyword(e.target.value)}
         placeholder="what are you searching?"
       />
       <label className="form__label" htmlFor="options">
@@ -38,9 +47,7 @@ const SearchBar = () => {
         id="options"
         onChange={(e) => setCity(e.target.value)}
       >
-        <option disabled hidden value="">
-          Sweden...
-        </option>
+        <option value="">Sweden...</option>
         <option value="Stockholm">Stockholm</option>
         <option value="Malmo">Malmo</option>
         <option value="Gothenburg">Gothenburg</option>
