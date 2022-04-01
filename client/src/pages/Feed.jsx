@@ -28,7 +28,7 @@ const Feed = () => {
   // }, []);
 
   return (
-    <div>
+    <div className="feed">
       <SearchBar />
       <section className="feed__card--group">
         {items.length === 0 ? (

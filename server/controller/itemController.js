@@ -9,9 +9,9 @@ const addItem = (req, res) => {
 };
 
 const getAllItems = (req, res, next) => {
+  // includs
   const query = {};
   if (req.query.q) {
-    // Shabih
     query.name = req.query.q;
   }
   if (req.query.city) {
