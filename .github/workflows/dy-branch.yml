@@ -16,7 +16,7 @@ jobs:
         run: heroku container:login
 
       - name: set NODE_ENV variable
-        run: heroku config:set NODE_ENV=production -a lending-app-codezilla web
+        run: heroku config:set NODE_ENV=production -a lending-app-codezilla
 
       - name: build and push
         env:
