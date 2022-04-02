@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Feed from './pages/Feed';
 import './index.css';
+import './styles/style.css';
 import SignUp from './pages/SignUp';
 
 const App = () => {

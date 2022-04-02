@@ -2,7 +2,7 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 
 const navigation = [
   { name: 'Feed', to: '/feed', current: false },
@@ -67,11 +67,11 @@ const Navigation = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="bg-red-600 p-2 rounded-md text-white hover:text-red-600 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  className="bg-red-700 p-1 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
-                  Lend/Borrow
-                  <span className="sr-only">View notifications</span>
-                  {/* <BellIcon className="h-6 w-6" aria-hidden="true" /> */}
+                  {/* Lend/Borrow */}
+                  <span className="sr-only">Lend/Borrow an Item</span>
+                  <PlusIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
 
                 {/* Profile dropdown */}
