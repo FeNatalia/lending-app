@@ -67,14 +67,16 @@ const Navigation = () => {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="bg-red-700 p-1 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  {/* Lend/Borrow */}
-                  <span className="sr-only">Lend/Borrow an Item</span>
-                  <PlusIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                <Link to="/add-item">
+                  <button
+                    type="button"
+                    className="bg-red-700 p-1 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                  >
+                    {/* Lend/Borrow */}
+                    <span className="sr-only">Lend/Borrow an Item</span>
+                    <PlusIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
+                </Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="ml-3 relative">
