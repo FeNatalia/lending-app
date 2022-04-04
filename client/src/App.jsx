@@ -11,6 +11,9 @@ import Feed from './pages/Feed';
 import './index.css';
 import './styles/style.css';
 import SignUp from './pages/SignUp';
+import Profile from './pages/Profile';
+import Help from './pages/Help';
+import Chat from './pages/Chat';
 
 const App = () => {
   return (
@@ -25,6 +28,9 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/feed" element={<Feed />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/chat" element={<Chat />} />
+            <Route path="/help" element={<Help />} />
           </Routes>
           <Footer />
         </Router>
