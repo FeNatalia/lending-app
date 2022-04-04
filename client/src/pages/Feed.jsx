@@ -10,22 +10,10 @@ const Feed = () => {
   const { keyword, setKeyword } = useContext(DataContext);
 
   useEffect(() => {
-    console.log("222");
     getItems(keyword, city).then((res) => {
-      console.log("333");
       setItems(res);
     });
   }, [city, keyword]);
-
-  // useEffect(() => {
-  //   console.log("111");
-  //   let search = window.location.search;
-  //   let params = new URLSearchParams(search);
-  //   let q = params.get("q");
-  //   let city = params.get("city");
-  //   setKeyword(q);
-  //   setCity(city);
-  // }, []);
 
   return (
     <div className="feed">
