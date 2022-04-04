@@ -23,7 +23,6 @@ export const Profile = () => {
                           First name
                         </label>
                         <input
-                          disabled
                           type="text"
                           value={user.name}
                           name="first-name"

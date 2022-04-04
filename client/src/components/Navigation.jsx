@@ -87,7 +87,7 @@ const Navigation = () => {
                     <PlusIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </Link>
-                {isLogged === false && (
+                {!isLogged && (
                   <button
                     onClick={() => navigate("/login")}
                     className="ml-2 bg-red-700 p-2 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
