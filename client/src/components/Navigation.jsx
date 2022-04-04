@@ -1,8 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { PlusIcon, MenuIcon, XIcon, UserIcon } from '@heroicons/react/outline';
+import { useAuth } from '../contexts/AuthProvider';
 
 const navigation = [
   { name: 'Feed', to: '/feed', current: false },
@@ -14,6 +15,17 @@ const classNames = (...classes) => {
 };
 
 const Navigation = () => {
+  const { setIsLogged, setUser, isLogged } = useAuth();
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    localStorage.setItem("uid", "");
+    setUser({});
+    setIsLogged(false);
+    navigate("/");
+  }
+
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -77,9 +89,12 @@ const Navigation = () => {
                     <PlusIcon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </Link>
+                {isLogged === false && <button onClick={() => navigate('/login')} className="ml-2 bg-red-700 p-2 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                  <i class="fa-solid fa-user mr-1"></i>Login
+                </button>}
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
+                {isLogged && <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
@@ -103,7 +118,7 @@ const Navigation = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/profile"
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700',
@@ -129,11 +144,12 @@ const Navigation = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/"
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700',
                             )}
+                            onClick={onLogout}
                           >
                             Sign out
                           </Link>
@@ -141,7 +157,7 @@ const Navigation = () => {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu>}
               </div>
             </div>
           </div>

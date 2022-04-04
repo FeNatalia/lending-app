@@ -6,12 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "../components/InputField";
 import fields from "../data/fields-login.json";
 import { signIn } from "../auth/authentication";
-import { getDocument } from "../auth/fireStore";
 import { useAuth } from "../contexts/AuthProvider";
+
 
 const Login = () => {
   // Global state
-  const { setUser, setIsLogged } = useAuth();
+  const { setIsLogged } = useAuth();
   const navigate = useNavigate();
 
   // Local state
@@ -32,11 +32,9 @@ const Login = () => {
   };
 
   const onSuccess = async (uid) => {
-    const document = await getDocument("users", uid);
-    setUser(document);
     setIsLogged(true);
     localStorage.setItem("uid", uid);
-    navigate("/");
+    navigate("/profile");
   };
 
   const onFailure = (message) => {

@@ -4,6 +4,7 @@ const cors = require('cors');
 require('./config/db.js');
 
 const itemRoutes = require('./routes/itemRoutes');
+const userRoutes = require('./routes/userRoutes');
 const {
   errorHandler,
   globalErrorHandler,
@@ -21,6 +22,7 @@ app.get('/api', (_req, res) => {
   return res.json({ message: 'You have reached the Lender API' });
 });
 app.use('/api/items', itemRoutes);
+app.use('/api/users', userRoutes);
 app.use('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
