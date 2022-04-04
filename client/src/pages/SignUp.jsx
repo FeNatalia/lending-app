@@ -26,7 +26,6 @@ export const SignUp = () => {
 
   const onSuccess = async (uid) => {
     const newUser = { name: form.name, email: form.email, uid };
-    console.log(newUser);
     await addUser(newUser);
     setVisibility(true);
   };
