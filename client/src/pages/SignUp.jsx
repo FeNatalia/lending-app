@@ -1,14 +1,14 @@
 // NPM Packages
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { ModalContext } from "../contexts/ModalProvider";
 
 // Project files
+import { ModalContext } from "../contexts/ModalProvider";
 import InputField from "../components/InputField";
 import Modal from "../components/Modal";
 import fields from "../data/fields-signup.json";
 import { createAccount } from "../auth/authentication";
-import { createDocumentWithId } from "../auth/fireStore";
+import { addUser } from "../api";
 
 export const SignUp = () => {
   // Global state
@@ -16,7 +16,7 @@ export const SignUp = () => {
 
   // Local state
   const [form, setForm] = useState({});
-  const [errorMassage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   // Methods
   const onChange = (key, value) => {
@@ -25,8 +25,9 @@ export const SignUp = () => {
   };
 
   const onSuccess = async (uid) => {
-    const newUser = { name: form.name, isAdmin: false };
-    await createDocumentWithId("users", uid, newUser);
+    const newUser = { name: form.name, email: form.email, uid };
+    console.log(newUser);
+    await addUser(newUser);
     setVisibility(true);
   };
 
@@ -64,7 +65,7 @@ export const SignUp = () => {
             <h2>Create an account to start using LendingApp</h2>
             <form id="signup-form" onSubmit={onSubmit} className="form-sign">
               {InputFields}
-              <p>{errorMassage}</p>
+              <p>{errorMessage}</p>
               <button>Sign up</button>
               <h3>Already have an account? </h3>
               <Link to="/login">Sign In</Link>

@@ -1,6 +1,5 @@
 // NPM Packages
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore/lite';
 import { getAuth } from 'firebase/auth';
 
 // const firebaseConfiguration = {
@@ -23,5 +22,4 @@ const firebaseConfiguration = {
 
 const firebaseInstance = initializeApp(firebaseConfiguration);
 
-export const fireStoreInstance = getFirestore(firebaseInstance);
 export const authInstance = getAuth(firebaseInstance);

@@ -12,3 +12,8 @@ export const getItems = async (keyword, city) => {
   const res = await axios.get(url);
   return res.data;
 };
+
+export const addUser = async user => {
+  const res = await axios.post(`${base}/api/users`, user);
+  return res.data;
+};
