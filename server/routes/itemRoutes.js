@@ -1,7 +1,5 @@
-const express = require('express');
+const router = require('express').Router();
 const { addItem, getAllItems } = require('../controller/itemController');
-
-const router = express.Router();
 
 router.get('/', getAllItems);
 router.post('/', addItem);

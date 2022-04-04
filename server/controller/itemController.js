@@ -1,23 +1,23 @@
-const Item = require("../model/item");
+const Item = require('../model/item');
 
 const addItem = (req, res) => {
   const item = new Item(req.body);
   item
     .save()
-    .then((result) => res.status(201).json(result))
-    .catch((err) => res.json({ error: err.message }));
+    .then(result => res.status(201).json(result))
+    .catch(err => res.json({ error: err.message }));
 };
 
-const getAllItems = (req, res, next) => {
+const getAllItems = (req, res) => {
   // includs
-  const query = {};
+  let query = {};
   if (req.query.q) {
-    query.name = req.query.q;
+    query = { ...query, name: { $regex: req.query.q, $options: 'i' } };
   }
   if (req.query.city) {
     query.city = req.query.city;
   }
-  Item.find(query).then((result) => {
+  Item.find(query).then(result => {
     return res.json(result);
   });
 };
