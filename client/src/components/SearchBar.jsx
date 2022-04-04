@@ -1,28 +1,32 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { DataContext } from '../contexts/DataProvider';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import { DataContext } from "../contexts/DataProvider";
+import { useNavigate } from "react-router-dom";
+import { getItems } from "../api";
 
-const SearchBar = (homeSearch = false) => {
+const SearchBar = ({ homeSearch = false }) => {
   const { city, setCity } = useContext(DataContext);
   const { keyword, setKeyword } = useContext(DataContext);
-  const [tempKeyword, setTempKeyword] = useState('');
+  const { items, setItems } = useContext(DataContext);
+
   const navigate = useNavigate();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setKeyword(tempKeyword);
-    setTempKeyword('');
+    getItems(keyword, city).then((res) => {
+      setItems(res);
+    });
     if (homeSearch) {
-      return navigate('/feed');
+      return navigate("/feed");
     }
   };
 
-  // useEffect(() => {
-  //   return () => {
-  //     setKeyword("");
-  //     setCity("");
-  //   };
-  // }, []);
+  useEffect(() => {
+    if (homeSearch) {
+      setKeyword("");
+      setCity("");
+      setItems([]);
+    }
+  }, []);
 
   return (
     <form
@@ -37,8 +41,8 @@ const SearchBar = (homeSearch = false) => {
         className="p-2 rounded-md accent-slate-500 shadow-sm md:p-3 md:mr-3"
         type="text"
         name="search"
-        value={tempKeyword}
-        onChange={e => setTempKeyword(e.target.value)}
+        value={keyword}
+        onChange={(e) => setKeyword(e.target.value)}
         placeholder="what are you searching?"
       />
       <label className="text-base font-bold mt-2 md:mt-0" htmlFor="options">
@@ -48,7 +52,8 @@ const SearchBar = (homeSearch = false) => {
         defaultValue=""
         className="p-2 rounded-md shadow-sm bg-white md:p-3"
         id="options"
-        onChange={e => setCity(e.target.value)}
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
       >
         <option value="" className="text-gray-400">
           Sweden...
