@@ -17,6 +17,9 @@ const getAllItems = (req, res) => {
   if (req.query.city) {
     query.city = req.query.city;
   }
+  if (req.query.category) {
+    query.category = req.query.category;
+  }
   Item.find(query).then((result) => {
     return res.json(result);
   });
