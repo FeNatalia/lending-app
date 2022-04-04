@@ -16,10 +16,15 @@ export function AuthProvider({ children }) {
 
   // Methods
   useEffect(() => {
-    onAuthStateChanged(authInstance, user => {
-      if (user) setAuth(user.uid);
-      else console.log('AuthProvider user signed out');
+    const unsubscribe = onAuthStateChanged(authInstance, user => {
+      if (user) {
+        setAuth(user.uid);
+        setUser(user);
+      } else {
+        console.log('AuthProvider user signed out');
+      }
     });
+    return unsubscribe;
   }, []);
 
   return (
