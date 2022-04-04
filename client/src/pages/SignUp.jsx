@@ -1,8 +1,5 @@
-// NPM Packages
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
-// Project files
 import { ModalContext } from "../contexts/ModalProvider";
 import InputField from "../components/InputField";
 import Modal from "../components/Modal";
@@ -11,14 +8,10 @@ import { createAccount } from "../auth/authentication";
 import { addUser } from "../api";
 
 export const SignUp = () => {
-  // Global state
   const { setVisibility } = useContext(ModalContext);
-
-  // Local state
   const [form, setForm] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Methods
   const onChange = (key, value) => {
     const field = { [key]: value };
     setForm({ ...form, ...field });
@@ -37,12 +30,12 @@ export const SignUp = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setErrorMessage("");
+    setForm({});
     const account = await createAccount(form.email, form.password);
 
     account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
   };
 
-  // Components
   const InputFields = fields.map((item) => (
     <InputField
       key={item.key}
