@@ -9,7 +9,6 @@ const addItem = (req, res) => {
 };
 
 const getAllItems = (req, res) => {
-  // includs
   let query = {};
   if (req.query.q) {
     query = { ...query, name: { $regex: req.query.q, $options: 'i' } };

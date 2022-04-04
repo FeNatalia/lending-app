@@ -7,6 +7,7 @@ import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 const navigation = [
   { name: 'Feed', to: '/feed', current: false },
   { name: 'About', to: '/about', current: false },
+  { name: 'Sign Up', to: '/signup', current: false },
 ];
 
 const classNames = (...classes) => {
@@ -129,7 +130,7 @@ const Navigation = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                            to="#"
+                            to="/"
                             className={classNames(
                               active ? 'bg-gray-100' : '',
                               'block px-4 py-2 text-sm text-gray-700',
