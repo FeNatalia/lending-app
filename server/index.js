@@ -1,14 +1,14 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 require('./config/db.js');
 const cors = require('cors');
-const http = require('http');
-const server = http.createServer(app);
+const app = express();
+const server = require('http').createServer(app);
 const { Server } = require('socket.io');
+
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: '*',
   },
 });
 
@@ -33,6 +33,10 @@ app.use('/api/users', userRoutes);
 
 io.on('connection', socket => {
   console.log('a user connected');
+
+  socket.emit('message', {
+    text: ` has joined the chat`,
+  });
 });
 
 app.use('*', (_req, res) => {

@@ -8,7 +8,7 @@ const DM = ({ username, roomname, socket }) => {
   useEffect(() => {
     socket.on('message', data => {
       //decypt
-      const ans = decrypt(data.text, data.username);
+      const ans = decrypt(data.text);
       let temp = messages;
       temp.push({
         userId: data.userId,
@@ -41,7 +41,7 @@ const DM = ({ username, roomname, socket }) => {
     <div className="chat">
       <div className="user-name">
         <h2>
-          {username} <span style={{ fontSize: '0.7rem' }}>in {roomname}</span>
+          {username} <span style={{ fontSize: '1rem' }}>in {roomname}</span>
         </h2>
       </div>
       <div className="chat-message">
