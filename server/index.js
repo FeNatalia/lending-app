@@ -9,7 +9,11 @@ const { Server } = require('socket.io');
 const io = new Server(server, {
   cors: {
     origin: '*',
+    methods: ['GET', 'POST'],
+    transports: ['websocket', 'polling'],
+    allowedHeaders: ['Access-Control-Allow-Origin'],
   },
+  allowEIO3: true,
 });
 
 const itemRoutes = require('./routes/itemRoutes');
@@ -32,10 +36,11 @@ app.use('/api/items', itemRoutes);
 app.use('/api/users', userRoutes);
 
 io.on('connection', socket => {
-  console.log('a user connected');
+  console.log('a user connected:', socket.id);
 
-  socket.emit('message', {
-    text: ` has joined the chat`,
+  socket.on('chat', text => {
+    console.log('here is the text', text);
+    socket.emit('message', text);
   });
 });
 

@@ -3,31 +3,25 @@ window.Buffer = window.Buffer || require('buffer').Buffer;
 
 const algorithm = 'aes-256-ctr';
 
-const secret_key = 'uI2ooxtwHeI6q69PS98fx9SWVGbpQohO';
+const secret_key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
 
-export const encrypt = text => {
+const encrypt = text => {
   const cipher = crypto.createCipheriv(algorithm, secret_key, iv);
 
-  const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
+  let encrypted = cipher.update(text, 'utf-8', 'hex');
+  encrypted += cipher.final('hex');
 
-  return {
-    iv: iv.toString('hex'),
-    content: encrypted.toString('hex'),
-  };
+  return encrypted;
 };
 
-export const decrypt = hash => {
-  const decipher = crypto.createDecipheriv(
-    algorithm,
-    secret_key,
-    Buffer.from(hash.iv, 'hex'),
-  );
+const decrypt = hash => {
+  const decipher = crypto.createDecipheriv(algorithm, secret_key, iv);
 
-  const decrpyted = Buffer.concat([
-    decipher.update(Buffer.from(hash.content, 'hex')),
-    decipher.final(),
-  ]);
+  let decrypted = decipher.update(hash, 'hex', 'utf-8');
+  decrypted += decipher.final('utf-8');
 
-  return decrpyted.toString();
+  return decrypted;
 };
+
+module.exports = { encrypt, decrypt };

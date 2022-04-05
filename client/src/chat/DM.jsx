@@ -9,22 +9,20 @@ const DM = ({ username, roomname }) => {
 
   useEffect(() => {
     socket.on('message', data => {
-      if (!data) {
-        //decypt
-        const ans = decrypt(data.text);
-        const msg = {
-          userId: data.userId,
-          username: data.username,
-          text: ans,
-        };
-        setMessages(m => [...m, msg]);
-      }
+      console.log(data);
+      const ans = decrypt(data);
+      console.log(ans);
+      const msg = {
+        userId: data.userId,
+        username: data.username,
+        text: ans,
+      };
+      setMessages(m => [...m, msg]);
     });
   }, [socket]);
 
   const sendData = () => {
-    if (text !== '') {
-      //encrypt here
+    if (text) {
       const ans = encrypt(text);
       socket.emit('chat', ans);
       setText('');
@@ -38,7 +36,7 @@ const DM = ({ username, roomname }) => {
 
   useEffect(scrollToBottom, [messages]);
 
-  console.log(messages, 'mess');
+  console.log('Messages: ', messages);
 
   return (
     <div className="chat">
