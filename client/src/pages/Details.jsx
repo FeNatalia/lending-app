@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { DataContext } from '../contexts/DataProvider';
 
 export const Details = () => {
   let { state } = useLocation();
