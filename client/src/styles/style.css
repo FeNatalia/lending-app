@@ -1,14 +1,15 @@
-@import './reset.css';
-@import './shared.css';
+@import "./reset.css";
+@import "./shared.css";
 /* @import './homepage.css'; */
 /* @import './search-bar.css'; */
-@import './footer.css';
-@import './addnew.css';
-@import './about.css';
-@import './feed.css';
-@import './itemCard.css';
-@import './variables.css';
-@import './signup.css';
-@import './signin.css';
-@import './modal.css';
-@import './sideBar.css';
+@import "./footer.css";
+@import "./addnew.css";
+@import "./about.css";
+@import "./feed.css";
+@import "./itemCard.css";
+@import "./variables.css";
+@import "./signup.css";
+@import "./signin.css";
+@import "./modal.css";
+@import "./sideBar.css";
+@import "./category.css";

@@ -1,24 +1,37 @@
 import React from "react";
 import Category from "./shared/Category";
+import "../styles/categories.css";
 
 const Categories = () => {
   const categoriesList = [
     {
+      name: "Electronics",
+      image:
+        "https://academy.fredsappliance.com/wp-content/uploads/2020/11/tools1.jpg",
+    },
+    {
       name: "Tools",
-      image: "",
+      image:
+        "https://academy.fredsappliance.com/wp-content/uploads/2020/11/tools1.jpg",
     },
     {
-      name: "Tools2",
-      image: "",
+      name: "Camping",
+      image:
+        "https://academy.fredsappliance.com/wp-content/uploads/2020/11/tools1.jpg",
     },
     {
-      name: "Tools3",
-      image: "",
+      name: "Garden",
+      image:
+        "https://academy.fredsappliance.com/wp-content/uploads/2020/11/tools1.jpg",
+    },
+    {
+      name: "Renovation",
+      image:
+        "https://academy.fredsappliance.com/wp-content/uploads/2020/11/tools1.jpg",
     },
   ];
   return (
     <section className="categories">
-      <h3>Categories</h3>
       {categoriesList.map((item) => (
         <Category item={item} />
       ))}

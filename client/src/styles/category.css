@@ -1,0 +1,20 @@
+.Category__Card {
+  padding: 10px 0 15px;
+}
+.card {
+  padding: 10px 0 15px 0;
+}
+/* .img-wrap {
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  margin: 15px;
+} */
+.card-img-top {
+  width: 100%;
+  display: block;
+  width: 192px;
+  height: 128px;
+  border-radius: 8px;
+  margin-right: 16px;
+}
