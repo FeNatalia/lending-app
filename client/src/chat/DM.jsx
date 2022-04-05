@@ -10,7 +10,7 @@ const DM = ({ username, roomname }) => {
   socket.open();
 
   useEffect(() => {
-    socket.on('message', data => {
+    const unsubscribe = socket.on('message', data => {
       const ans = decrypt(data);
       const msg = {
         userId: data.userId,
@@ -19,6 +19,8 @@ const DM = ({ username, roomname }) => {
       };
       setMessages(m => [...m, msg]);
     });
+
+    return unsubscribe;
   }, [socket]);
 
   const sendData = () => {
@@ -47,14 +49,20 @@ const DM = ({ username, roomname }) => {
         {messages.map(i => {
           if (i.username === username) {
             return (
-              <div className="message">
+              <div
+                key={Math.random().toString(36).substring(2, 5)}
+                className="message"
+              >
                 <p>{i.text}</p>
                 <span>{i.username}</span>
               </div>
             );
           } else {
             return (
-              <div className="message mess-right">
+              <div
+                key={Math.random().toString(36).substring(2, 5)}
+                className="message mess-right"
+              >
                 <p>{i.text} </p>
                 <span>{i.username}</span>
               </div>
