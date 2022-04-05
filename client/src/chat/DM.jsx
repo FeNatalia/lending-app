@@ -1,4 +1,4 @@
-import { encrypt, decrypt } from './encryption.js';
+import { encrypt, decrypt } from '../encryption';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { DataContext } from '../contexts/DataProvider.jsx';
 
