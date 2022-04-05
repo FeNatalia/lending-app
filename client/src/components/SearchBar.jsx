@@ -6,13 +6,14 @@ import { getItems } from "../api";
 const SearchBar = ({ homeSearch = false }) => {
   const { city, setCity } = useContext(DataContext);
   const { keyword, setKeyword } = useContext(DataContext);
+  const { category, setCategory } = useContext(DataContext);
   const { items, setItems } = useContext(DataContext);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getItems(keyword, city).then((res) => {
+    getItems(keyword, city, category).then((res) => {
       setItems(res);
     });
     if (homeSearch) {
@@ -24,6 +25,7 @@ const SearchBar = ({ homeSearch = false }) => {
     if (homeSearch) {
       setKeyword("");
       setCity("");
+      setCategory("");
       setItems([]);
     }
   }, []);
@@ -63,6 +65,25 @@ const SearchBar = ({ homeSearch = false }) => {
         <option value="Gothenburg">Gothenburg</option>
         <option value="Uppsala">Uppsala</option>
         <option value="Lund">Lund</option>
+      </select>
+      <label className="text-base font-bold mt-2 md:mt-0" htmlFor="options">
+        Select a category
+      </label>
+      <select
+        defaultValue=""
+        className="p-2 rounded-md shadow-sm bg-white md:p-3"
+        id="options-category"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option value="" className="text-gray-400">
+          Category...
+        </option>
+        <option value="Electronics">Electronics</option>
+        <option value="Tools">Tools</option>
+        <option value="Camping">Camping</option>
+        <option value="Garden">Garden</option>
+        <option value="Renovation">Renovation</option>
       </select>
       <button
         className="rounded-md bg-red-700 border-solid border-2 border-red-700 text-white p-2 mt-2 text-lg hover:bg-white hover:text-red-700 transition-all duration-300 md:px-2 md:mt-0 md:py-1 shadow-sm"

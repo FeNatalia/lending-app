@@ -7,8 +7,8 @@ export const addItem = async (item) => {
   return res.data;
 };
 
-export const getItems = async (keyword, city) => {
-  const url = `${base}/api/items?q=${keyword}&city=${city}`;
+export const getItems = async (keyword, city, category) => {
+  const url = `${base}/api/items?q=${keyword}&city=${city}&category=${category}`;
   const res = await axios.get(url);
   return res.data;
 };
