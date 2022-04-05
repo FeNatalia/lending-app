@@ -6,6 +6,8 @@ const app = express();
 const server = require('http').createServer(app);
 const { Server } = require('socket.io');
 
+app.use(cors());
+
 const io = new Server(server, {
   cors: {
     origin: '*',
@@ -23,9 +25,8 @@ const {
   globalErrorHandler,
 } = require('./controller/errorHandler');
 
-const port = process.env.PORT || 8080;
+const { PORT } = process.env || 8080;
 
-app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
@@ -51,8 +52,8 @@ app.use('*', (_req, res) => {
 app.use(errorHandler);
 app.use(globalErrorHandler);
 
-server.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+server.listen(PORT, () => {
+  console.log(`App listening at http://localhost:${PORT}`);
 });
 
 module.exports.app = app;
