@@ -3,6 +3,7 @@ import { addItem } from '../api';
 
 const AddNew = () => {
   const [suceesMessage, setSuceesMessage] = useState([]);
+  const [imgUploaded, setimgUploaded] = useState('');
   const [errors, setErrors] = useState([]);
 
   const initialItem = {
@@ -74,6 +75,7 @@ const AddNew = () => {
     getBase64(img, result => {
       base64String = result;
       setItem({ ...item, image: base64String });
+      setimgUploaded('Image is uploaded');
     });
   };
 
@@ -104,16 +106,6 @@ const AddNew = () => {
               value={item.description}
               onChange={handleChange}
             />
-            {/* <input
-              type="text"
-              className="addnew-form__input"
-              id="addnew-form__image"
-              name="image"
-              placeholder="Image link"
-              value={item.image}
-              onChange={handleChange}
-            /> */}
-            <input type="file" name="file" onChange={handleUpload} />
 
             <label className="addnew-form__label" id="addnew-form__category">
               What is the category ?
@@ -147,6 +139,24 @@ const AddNew = () => {
               <option value="Uppsala">Uppsala</option>
               <option value="Lund">Lund</option>
             </select>
+            <input
+              id="file-upload"
+              className="hidden"
+              type="file"
+              onChange={handleUpload}
+            />
+            <label
+              for="file-upload"
+              className="border border-solid inline-block border-gray-700 bg-opacity-70 rounded-md bg-slate-100 px-3 py-1 cursor-pointer mb-6"
+            >
+              <i className="fa fa-cloud-upload mr-1 text-lg"></i>
+              <span className="text-base font-bold"> Upload Picture ...</span>
+              {item.image && imgUploaded && (
+                <span className="text-green-700 ml-8 italic">
+                  {imgUploaded}
+                </span>
+              )}
+            </label>
             <div className="addnew-form__button-wrapper">
               <button className="addnew-form__button" type="submit">
                 Add
