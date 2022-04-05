@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { DataContext } from '../contexts/DataProvider';
 
 export const Details = () => {
   let { state } = useLocation();
   let navigate = useNavigate();
   const goBackButton = () => navigate('/feed');
 
-  // const joinRoom = () => {
-  //   if (username !== '' && room !== '') {
-  //     socket.emit('join_room', room);
-  //     setShowChat(true);
-  //   }
-  // };
+  const { socket, username, room, setShowChat } = useContext(DataContext);
+
+  const joinRoom = () => {
+    if (username !== '' && room !== '') {
+      socket.emit('join_room', room);
+      setShowChat(true);
+    }
+  };
 
   return (
     <div className="details">
@@ -29,9 +32,9 @@ export const Details = () => {
         <button className="btn--primary" onClick={() => goBackButton()}>
           Go back
         </button>
-        {/* <button className="btn--primary" onClick={joinRoom}>
+        <button className="btn--primary" onClick={joinRoom}>
           Send a message
-        </button> */}
+        </button>
       </div>
     </div>
   );

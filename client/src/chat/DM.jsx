@@ -12,13 +12,12 @@ const DM = ({ username, roomname }) => {
       if (!data) {
         //decypt
         const ans = decrypt(data.text);
-        let temp = messages;
-        temp.push({
+        const msg = {
           userId: data.userId,
           username: data.username,
           text: ans,
-        });
-        setMessages([...temp]);
+        };
+        setMessages(m => [...m, msg]);
       }
     });
   }, [socket]);
