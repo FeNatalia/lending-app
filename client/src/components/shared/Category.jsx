@@ -22,7 +22,7 @@ const Category = ({ item }) => {
       <figure className="img-wrap">
         <img className="card-img-top" src={item.image} alt="Card cap" />
       </figure>
-      <div>{item.name}</div>
+      <div className="Category__name">{item.name}</div>
     </div>
   );
 };
