@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const { removeModuleScopePlugin } = require('customize-cra');
+
 module.exports = function override(config, env) {
   config.resolve.fallback = {
     url: require.resolve('url'),
@@ -19,3 +21,5 @@ module.exports = function override(config, env) {
 
   return config;
 };
+
+module.exports = removeModuleScopePlugin();
