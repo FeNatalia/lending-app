@@ -1,15 +1,8 @@
 import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ModalContext } from '../contexts/ModalProvider';
+import { ModalContext } from '../../contexts/ModalProvider';
 
 const Modal = ({ children }) => {
   const { visibility, setVisibility } = useContext(ModalContext);
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    setVisibility(false);
-    navigate('/login');
-  };
 
   return (
     <div
@@ -24,9 +17,6 @@ const Modal = ({ children }) => {
           &times;
         </span>
         <div className="popup__content">{children}</div>
-        <button className="button--popup" type="submit" onClick={handleClick}>
-          login
-        </button>
       </div>
     </div>
   );

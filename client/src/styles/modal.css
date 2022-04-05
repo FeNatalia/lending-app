@@ -29,12 +29,14 @@
 .popup h2 {
   margin-top: 0;
   color: #333;
+  text-align: center;
   font-family: Tahoma, Arial, sans-serif;
 }
 
 .popup h1 {
   margin-top: 0.5rem;
   color: #333;
+  text-align: center;
   font-family: Tahoma, Arial, sans-serif;
   font-weight: 600;
 }
@@ -59,27 +61,6 @@
   line-height: 1.2;
   max-height: 30%;
   overflow: hidden;
-}
-
-.button--popup {
-  margin-top: 1rem;
-  padding: 0.8rem;
-  border-radius: 0.6rem;
-  border: 2px solid #ff6a95;
-  max-width: 20rem;
-  align-self: center;
-  text-transform: uppercase;
-  font-weight: 600;
-  background-color: #ff6a95;
-  color: #fff;
-}
-
-.button--popup:hover {
-  background-color: #fff;
-  color: #ff6a95;
-  border: 2px solid #ff6a95;
-  box-shadow: 2px 19px 82px -13px rgba(65, 65, 65, 0.63);
-  transition: all 0.5s;
 }
 
 @media screen and (max-width: 700px) {
