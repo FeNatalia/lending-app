@@ -9,9 +9,7 @@ const DM = ({ username, roomname }) => {
 
   useEffect(() => {
     socket.on('message', data => {
-      console.log(data);
       const ans = decrypt(data);
-      console.log(ans);
       const msg = {
         userId: data.userId,
         username: data.username,
@@ -35,8 +33,6 @@ const DM = ({ username, roomname }) => {
   };
 
   useEffect(scrollToBottom, [messages]);
-
-  console.log('Messages: ', messages);
 
   return (
     <div className="chat">
