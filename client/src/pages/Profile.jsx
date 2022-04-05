@@ -1,14 +1,31 @@
+import { useCallback, useEffect } from "react";
+import { getUser } from "../api";
 import SideBar from "../components/sidebar/SideBar";
 import { useAuth } from "../contexts/AuthProvider";
 
 export const Profile = () => {
-  const { user, isLogged } = useAuth();
+  const { user, setUser, isLogged } = useAuth();
+
+  const fetchUser = useCallback(async () => {
+    const uid = localStorage.getItem("uid");
+    if (uid) {
+      const user = await getUser(uid);
+      setUser(user);
+    }
+  }, [setUser]);
+
+  useEffect(() => fetchUser(), [fetchUser]);
 
   return (
     <div className="flex">
       <SideBar />
       {isLogged && (
-        <div className="mt-10 sm:mt-0">
+        <header>
+          <h1>User Details:</h1>
+          <h3>Name: {user.name}</h3>
+          <p>E-mail: {user.email}</p>
+        </header>
+        /*<div className="mt-10 sm:mt-0">
           <div className="md:grid md:grid-cols-3 md:gap-6">
             <div className="mt-5 md:mt-0 md:col-span-2">
               <form action="#" method="POST">
@@ -179,7 +196,7 @@ export const Profile = () => {
               </form>
             </div>
           </div>
-        </div>
+        </div>*/
       )}
     </div>
   );

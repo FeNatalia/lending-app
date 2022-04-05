@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { PlusIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
+import { PlusIcon, MenuIcon, XIcon, UserAddIcon } from "@heroicons/react/outline";
 import { useAuth } from "../contexts/AuthProvider";
 
 const navigation = [
@@ -14,7 +14,7 @@ const classNames = (...classes) => {
 };
 
 const Navigation = () => {
-  const { setIsLogged, setUser, isLogged } = useAuth();
+  const { setIsLogged, setUser, user, isLogged } = useAuth();
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -96,6 +96,11 @@ const Navigation = () => {
                   </button>
                 )}
 
+                {/* Hello , User! */}
+                {isLogged && (
+                  <div className="navigation-greeting-wrapper">
+                    <h1 className="navigation-greeting">Hello, {user.name} !</h1>
+                  </div>)}
                 {/* Profile dropdown */}
                 {isLogged && (
                   <Menu as="div" className="ml-3 relative">

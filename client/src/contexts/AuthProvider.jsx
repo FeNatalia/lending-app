@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(authInstance, user => {
       if (user) {
         setAuth(user.uid);
-        setUser(user);
+        // setUser(user);
       } else {
         console.log('AuthProvider user signed out');
       }
