@@ -1,5 +1,4 @@
 const crypto = require('crypto');
-window.Buffer = window.Buffer || require('buffer').Buffer;
 
 const algorithm = 'aes-256-ctr';
 
