@@ -25,7 +25,7 @@ const {
   globalErrorHandler,
 } = require('./controller/errorHandler');
 
-const { PORT } = process.env || 8080;
+const port = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -43,8 +43,8 @@ app.use('*', (_req, res) => {
 app.use(errorHandler);
 app.use(globalErrorHandler);
 
-server.listen(PORT, () => {
-  console.log(`App listening at http://localhost:${PORT}`);
+server.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
 });
 
 io.on('connection', socket => {
