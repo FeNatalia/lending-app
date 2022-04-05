@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, index }) => {
   return (
     <article className="card__item shadow-md hover:scale-105 hover:transition-all">
       <figure className="card__img--wrap">
@@ -20,7 +21,9 @@ const ItemCard = ({ item }) => {
         <small className="card__item--city">{item.city}</small>
         <small className="card__item--city">{item.category}</small>
       </div>
-      <button className="card__item--btn"> Item Details</button>
+      <Link to={"/details"} state={{ item }} key={index} className="details-card">
+        <button className="card__item--btn"> Item Details</button>
+      </Link>
     </article>
   );
 };

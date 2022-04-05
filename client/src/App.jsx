@@ -17,6 +17,7 @@ import Help from "./pages/Help";
 import Chat from "./pages/Chat";
 import { getUser } from "./api";
 import { useAuth } from "./contexts/AuthProvider";
+import { Details } from "./pages/Details";
 const App = () => {
   const { setUser, setIsLogged } = useAuth();
 
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/details" element={<Details />} />
           </Routes>
           <Footer />
         </Router>

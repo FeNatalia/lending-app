@@ -1,0 +1,51 @@
+/*Details.jsx*/
+.details {
+    margin: 10px;
+    padding: 10px;
+    display: grid;
+    justify-content: center;
+}
+
+.details__header {
+    text-align: center;
+    margin: 10px;
+}
+
+.details__image {
+    display: grid;
+    justify-content: center;
+}
+
+.details__image img {
+    width: 300px;
+    height: auto;
+}
+
+.details__header h1 {
+    margin: 10px;
+}
+
+.details__body {
+    margin: 10px;
+}
+
+.details__body p {
+    margin: 5px;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.details___button {
+    text-align: center;
+    margin: 10px;
+}
+
+.btn--primary {
+    padding: 5px;
+    font-size: 18px;
+    border: 2px solid green;
+    color: green;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: white;
+}
