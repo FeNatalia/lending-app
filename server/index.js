@@ -48,10 +48,9 @@ server.listen(port, () => {
 });
 
 io.on('connection', socket => {
-  console.log('a user connected:', socket.id);
+  console.log('a user connected');
 
   socket.on('chat', text => {
-    console.log('here is the text', text);
     socket.emit('message', text);
   });
 });
