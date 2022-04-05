@@ -1,4 +1,14 @@
 /*Details.jsx*/
+.leaflet-container {
+    width: 280px;
+    height: 150px;
+}
+
+#map {
+    height: 180px;
+    margin-left: 10px;
+}
+
 .details {
     margin: 10px;
     padding: 10px;
