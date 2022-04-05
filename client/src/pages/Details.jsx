@@ -8,6 +8,9 @@ export const Details = () => {
 
     return (
         <div className='details'>
+            <div className='details__image'>
+                <img src={state.item.image} alt={state.item.name} />
+            </div>
             <header className='details__header'>
                 <h1>Name: {state.item.name}</h1>
             </header>
