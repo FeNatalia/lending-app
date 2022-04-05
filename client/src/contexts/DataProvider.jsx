@@ -4,7 +4,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [city, setCity] = useState("");
-  const [category, setCategory] = useState();
+  const [category, setCategory] = useState("");
   const [keyword, setKeyword] = useState("");
   const value = {
     category,
