@@ -6,6 +6,13 @@ export const Details = () => {
   let navigate = useNavigate();
   const goBackButton = () => navigate('/feed');
 
+  // const joinRoom = () => {
+  //   if (username !== '' && room !== '') {
+  //     socket.emit('join_room', room);
+  //     setShowChat(true);
+  //   }
+  // };
+
   return (
     <div className="details">
       <div className="details__image">
@@ -22,6 +29,9 @@ export const Details = () => {
         <button className="btn--primary" onClick={() => goBackButton()}>
           Go back
         </button>
+        {/* <button className="btn--primary" onClick={joinRoom}>
+          Send a message
+        </button> */}
       </div>
     </div>
   );

@@ -1,21 +1,25 @@
 import { encrypt, decrypt } from './encryption.js';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { DataContext } from '../contexts/DataProvider.jsx';
 
-const DM = ({ username, roomname, socket }) => {
+const DM = ({ username, roomname }) => {
+  const { socket } = useContext(DataContext);
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     socket.on('message', data => {
-      //decypt
-      const ans = decrypt(data.text);
-      let temp = messages;
-      temp.push({
-        userId: data.userId,
-        username: data.username,
-        text: ans,
-      });
-      setMessages([...temp]);
+      if (!data) {
+        //decypt
+        const ans = decrypt(data.text);
+        let temp = messages;
+        temp.push({
+          userId: data.userId,
+          username: data.username,
+          text: ans,
+        });
+        setMessages([...temp]);
+      }
     });
   }, [socket]);
 
