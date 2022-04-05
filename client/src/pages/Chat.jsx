@@ -1,13 +1,16 @@
-import React from 'react'
-import SideBar from '../components/sidebar/SideBar'
+import React from 'react';
+import { io } from 'socket.io-client';
+import DM from '../chat/DM';
+import SideBar from '../components/sidebar/SideBar';
 
 const Chat = () => {
-    return (
-        <div>
-            <SideBar />
-            Chat
-        </div>
-    )
-}
+  const socket = io('http://localhost:8080');
+  return (
+    <div>
+      <SideBar />
+      <DM roomname="hi" socket={socket} username="John" />
+    </div>
+  );
+};
 
-export default Chat
+export default Chat;

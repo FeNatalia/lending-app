@@ -1,7 +1,16 @@
 const express = require('express');
+const app = express();
 const path = require('path');
-const cors = require('cors');
 require('./config/db.js');
+const cors = require('cors');
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+  },
+});
 
 const itemRoutes = require('./routes/itemRoutes');
 const userRoutes = require('./routes/userRoutes');
@@ -9,8 +18,6 @@ const {
   errorHandler,
   globalErrorHandler,
 } = require('./controller/errorHandler');
-
-const app = express();
 
 const port = process.env.PORT || 8080;
 
@@ -23,6 +30,11 @@ app.get('/api', (_req, res) => {
 });
 app.use('/api/items', itemRoutes);
 app.use('/api/users', userRoutes);
+
+io.on('connection', socket => {
+  console.log('a user connected');
+});
+
 app.use('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
@@ -30,7 +42,7 @@ app.use('*', (_req, res) => {
 app.use(errorHandler);
 app.use(globalErrorHandler);
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
 
