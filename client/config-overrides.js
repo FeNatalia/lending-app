@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const { removeModuleScopePlugin } = require('customize-cra');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
 module.exports = function override(config, env) {
   config.resolve.fallback = {
@@ -18,8 +18,9 @@ module.exports = function override(config, env) {
       Buffer: ['buffer', 'Buffer'],
     }),
   );
+  config.resolve.plugins = config.resolve.plugins.filter(
+    plugin => !(plugin instanceof ModuleScopePlugin),
+  );
 
   return config;
 };
-
-module.exports = removeModuleScopePlugin();
