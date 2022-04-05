@@ -13,7 +13,7 @@ const Feed = () => {
         {items.length === 0 ? (
           <div>No item found!</div>
         ) : (
-          items.map((item) => <ItemCard key={item._id} item={item} />)
+          items.map((item, index) => <ItemCard key={item._id} item={item} index={index} />)
         )}
       </section>
     </div>
