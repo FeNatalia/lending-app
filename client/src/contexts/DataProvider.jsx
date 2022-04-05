@@ -8,7 +8,9 @@ export const DataProvider = ({ children }) => {
   const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
 
-  const socket = io('http://localhost:8080', {
+  //prettier-ignore
+  const SERVER_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080' : '';
+  const socket = io(SERVER_URL, {
     autoConnect: false,
   });
 
