@@ -51,7 +51,6 @@ const SearchBar = ({ homeSearch = false }) => {
         Select a location
       </label>
       <select
-        defaultValue=""
         className="p-2 rounded-md shadow-sm bg-white md:p-3"
         id="options"
         value={city}
@@ -70,7 +69,6 @@ const SearchBar = ({ homeSearch = false }) => {
         Select a category
       </label>
       <select
-        defaultValue=""
         className="p-2 rounded-md shadow-sm bg-white md:p-3"
         id="options-category"
         value={category}
