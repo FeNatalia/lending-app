@@ -7,6 +7,8 @@ const DM = ({ username, roomname }) => {
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
+  socket.open();
+
   useEffect(() => {
     socket.on('message', data => {
       const ans = decrypt(data);

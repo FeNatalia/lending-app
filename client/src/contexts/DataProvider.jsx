@@ -8,7 +8,10 @@ export const DataProvider = ({ children }) => {
   const [category, setCategory] = useState('');
   const [keyword, setKeyword] = useState('');
 
-  const socket = io('http://localhost:8080');
+  const socket = io('http://localhost:8080', {
+    autoConnect: false,
+  });
+
   const [username, setUsername] = useState('');
   const [room, setRoom] = useState('');
   const [showChat, setShowChat] = useState(false);

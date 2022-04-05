@@ -15,7 +15,7 @@ const io = new Server(server, {
     transports: ['websocket', 'polling'],
     allowedHeaders: ['Access-Control-Allow-Origin'],
   },
-  allowEIO3: true,
+  allowEIO4: true,
 });
 
 const itemRoutes = require('./routes/itemRoutes');
@@ -36,15 +36,6 @@ app.get('/api', (_req, res) => {
 app.use('/api/items', itemRoutes);
 app.use('/api/users', userRoutes);
 
-io.on('connection', socket => {
-  console.log('a user connected:', socket.id);
-
-  socket.on('chat', text => {
-    console.log('here is the text', text);
-    socket.emit('message', text);
-  });
-});
-
 app.use('*', (_req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
@@ -54,6 +45,15 @@ app.use(globalErrorHandler);
 
 server.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
+});
+
+io.on('connection', socket => {
+  console.log('a user connected:', socket.id);
+
+  socket.on('chat', text => {
+    console.log('here is the text', text);
+    socket.emit('message', text);
+  });
 });
 
 module.exports.app = app;
