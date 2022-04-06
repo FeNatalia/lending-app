@@ -1,13 +1,13 @@
-import React from 'react'
-import SideBar from '../components/sidebar/SideBar'
+import DM from '../chat/DM';
+import SideBar from '../components/sidebar/SideBar';
 
 const Chat = () => {
-    return (
-        <div>
-            <SideBar />
-            Chat
-        </div>
-    )
-}
+  return (
+    <div>
+      <SideBar />
+      <DM roomname="hi" username="John" />
+    </div>
+  );
+};
 
-export default Chat
+export default Chat;

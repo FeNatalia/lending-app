@@ -1,16 +1,16 @@
-import { Fragment } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { PlusIcon, MenuIcon, XIcon, UserAddIcon } from "@heroicons/react/outline";
-import { useAuth } from "../contexts/AuthProvider";
+import { Fragment } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
+import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useAuth } from '../contexts/AuthProvider';
 
 const navigation = [
-  { name: "Feed", to: "/feed", current: false },
-  { name: "About", to: "/about", current: false },
+  { name: 'Feed', to: '/feed', current: false },
+  { name: 'About', to: '/about', current: false },
 ];
 
 const classNames = (...classes) => {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 };
 
 const Navigation = () => {
@@ -18,10 +18,10 @@ const Navigation = () => {
   const navigate = useNavigate();
 
   const onLogout = () => {
-    localStorage.setItem("uid", "");
+    localStorage.setItem('uid', '');
     setUser({});
     setIsLogged(false);
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -58,17 +58,17 @@ const Navigation = () => {
                 </Link>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map((item) => (
+                    {navigation.map(item => (
                       <Link
                         key={item.name}
                         to={item.to}
                         className={classNames(
                           item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                            ? 'bg-gray-900 text-white'
+                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          'px-3 py-2 rounded-md text-sm font-medium',
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={item.current ? 'page' : undefined}
                       >
                         {item.name}
                       </Link>
@@ -89,7 +89,7 @@ const Navigation = () => {
                 </Link>
                 {!isLogged && (
                   <button
-                    onClick={() => navigate("/login")}
+                    onClick={() => navigate('/login')}
                     className="ml-2 bg-red-700 p-2 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                   >
                     <i className="fa-solid fa-user mr-1"></i>Login
@@ -129,8 +129,8 @@ const Navigation = () => {
                             <Link
                               to="/profile"
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                             >
                               Your Profile
@@ -142,8 +142,8 @@ const Navigation = () => {
                             <Link
                               to="#"
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                             >
                               Settings
@@ -155,8 +155,8 @@ const Navigation = () => {
                             <Link
                               to="/"
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                               onClick={onLogout}
                             >
@@ -174,20 +174,21 @@ const Navigation = () => {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
+              {navigation.map(item => (
+                <Disclosure.Button className="flex">
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    className={classNames(
+                      item.current
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'block px-3 py-2 rounded-md text-base font-medium',
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </Link>
                 </Disclosure.Button>
               ))}
             </div>
