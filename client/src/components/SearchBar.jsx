@@ -4,10 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { getItems } from '../api';
 
 const SearchBar = ({ homeSearch = false }) => {
-  const { city, setCity } = useContext(DataContext);
-  const { keyword, setKeyword } = useContext(DataContext);
-  const { category, setCategory } = useContext(DataContext);
-  const { items, setItems } = useContext(DataContext);
+  const {
+    setItems,
+    category,
+    setCategory,
+    keyword,
+    setKeyword,
+    city,
+    setCity,
+  } = useContext(DataContext);
 
   const navigate = useNavigate();
 
