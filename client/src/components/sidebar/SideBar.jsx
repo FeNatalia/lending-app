@@ -20,8 +20,7 @@ export default function SideBar() {
 
       <Link
         to="/chat"
-        className={`sidebar--link ${currentPage === "/chat" && "active"
-          }`}
+        className={`sidebar--link ${currentPage === "/chat" && "active"}`}
       >
         My Messages
       </Link>

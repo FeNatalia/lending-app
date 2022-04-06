@@ -75,4 +75,13 @@
     width: 125px;
     margin-left: 200px;
   }
+  .ContactForm {
+    display: block;
+  }
+  .formInput {
+    width: 340px;
+  }
+  .ContactForm-msg-header {
+    margin-top: 15px;
+  }
 }

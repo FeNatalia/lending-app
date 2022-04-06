@@ -14,7 +14,6 @@ const Help = () => {
   } = useForm();
   const [disabled, setDisabled] = useState(false);
 
-  // Function that displays a success toast on bottom right of the page when form submission is successful
   const toastifySuccess = () => {
     toast("Messege sent!", {
       position: "bottom-right",
@@ -28,15 +27,11 @@ const Help = () => {
     });
   };
 
-  // Function called on submit that uses emailjs to send email of valid contact form
   const onSubmit = async (data) => {
-    // Destrcture data object
     const { name, email, subject, message } = data;
     try {
-      // Disable form while processing submission
       setDisabled(true);
 
-      // Define template params
       const templateParams = {
         name,
         email,
@@ -52,11 +47,8 @@ const Help = () => {
         "QeS7vzvCtYos0JkMn"
       );
 
-      // Reset contact form fields after submission
       reset();
-      // Display success toast
       toastifySuccess();
-      // Re-enable form submission
       setDisabled(false);
     } catch (e) {
       console.log(e);
