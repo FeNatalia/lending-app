@@ -196,9 +196,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="p-4 text-sm bg-slate-800 flex items-center justify-center gap-8">
+      <div className="p-4 text-sm bg-slate-800 flex items-center justify-center gap-8 sm:flex sm:flex-col">
         <p>&copy; 2021 Copyright</p>
-        <p>|</p>
         <p className="flex items-center justify-center">
           Made with{' '}
           <span className="text-3xl leading-none mx-1.5 text-red-600">
@@ -206,7 +205,6 @@ const Footer = () => {
           </span>{' '}
           by CodeZilla
         </p>
-        <p>|</p>
         <p>{time}</p>
       </div>
     </footer>
