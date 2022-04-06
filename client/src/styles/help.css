@@ -1,0 +1,78 @@
+.ContactForm {
+  margin: 0 auto;
+  align-items: center;
+}
+.ContactForm-msg-header {
+  text-align: center;
+}
+.contactForm-form {
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.formInput {
+  width: 400px;
+  height: 70px;
+  box-shadow: 0 0 0 1px rgb(161, 161, 161);
+  border: none;
+  color: rgb(58, 58, 58);
+  border-radius: 5px;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+.col {
+  margin: 0 auto;
+}
+
+.formInput::placeholder {
+  color: rgb(63, 63, 63);
+  opacity: 1;
+}
+
+.errorMessage {
+  color: #f45532;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+#notifyToast {
+  color: rgb(92, 93, 94);
+  border-radius: 6px;
+  width: 159px;
+  height: 47px;
+  padding: 15px;
+  margin: 0 auto;
+  float: right;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.Toastify__toast-body {
+  line-height: 26px;
+}
+
+.submit-btn {
+  background-color: var(--dark);
+  color: gray;
+  padding: 15px 50px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.submit-btn:hover {
+  background-color: var(--green);
+  color: black;
+  border: 2px solid black;
+}
+.col__formRow {
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .submit-message {
+    width: 125px;
+    margin-left: 200px;
+  }
+}
