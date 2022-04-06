@@ -1,13 +1,16 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useCallback, useEffect, useState } from "react";
-import { getUser } from "../api";
+import { useCallback, useContext, useEffect, useState } from 'react';
+import { getUser } from '../api';
+import { DataContext } from '../contexts/DataProvider';
 
 export const Details = () => {
   let { state } = useLocation();
-  let navigate = useNavigate();
+  let [owner, setOwner] = useState({});
+  const { username, room, setShowChat, socket } = useContext(DataContext);
+
+  const navigate = useNavigate();
   const goBackButton = () => navigate('/feed');
-  let [owner, setOwner] = useState({})
 
   const fetchUser = useCallback(async () => {
     const itemOwner = await getUser(state.item.owner);
@@ -37,6 +40,13 @@ export const Details = () => {
       itemPosition = [62.0, 15.0];
       break;
   }
+
+  const joinRoom = () => {
+    if (username !== '' && room !== '') {
+      socket.emit('join_room', room);
+      setShowChat(true);
+    }
+  };
 
   return (
     <div className="details">
@@ -71,6 +81,9 @@ export const Details = () => {
       <div className="details___button">
         <button className="btn--primary" onClick={() => goBackButton()}>
           Go back
+        </button>
+        <button className="btn--primary" onClick={joinRoom}>
+          Send a message
         </button>
       </div>
     </div>
