@@ -1,10 +1,21 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useCallback, useEffect, useState } from "react";
+import { getUser } from "../api";
 
 export const Details = () => {
   let { state } = useLocation();
   let navigate = useNavigate();
   const goBackButton = () => navigate('/feed');
+  let [owner, setOwner] = useState({})
+
+  const fetchUser = useCallback(async () => {
+    const itemOwner = await getUser(state.item.owner);
+    setOwner(itemOwner);
+  }, [setOwner, state.item.owner]);
+
+  useEffect(() => fetchUser(), [fetchUser]);
+
   let itemPosition;
   switch (state.item.city) {
     case 'Stockholm':
@@ -52,6 +63,11 @@ export const Details = () => {
           </Marker>
         </MapContainer>
       </div>
+      <section className="details__owner">
+        <h2>Owner info:</h2>
+        <p>Name: {owner.name}</p>
+        <p>email: {owner.email}</p>
+      </section>
       <div className="details___button">
         <button className="btn--primary" onClick={() => goBackButton()}>
           Go back

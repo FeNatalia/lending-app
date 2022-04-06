@@ -113,7 +113,6 @@ const Navigation = () => {
                       <i className="fa-solid fa-user mr-1"></i>Login
                     </button>
                   )}
-
                   {/* Profile dropdown */}
                   {isLogged && (
                     <Menu as="div" className="ml-3 relative">
