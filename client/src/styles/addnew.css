@@ -3,6 +3,7 @@
   min-height: calc(100vh - 120px);
   background-color: #fdf6ec;
 }
+
 .addnew-page {
   display: grid;
   justify-content: center;
@@ -26,7 +27,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  /* background-image: url("../static/tools.svg"); */
+  background-image: url("https://images.unsplash.com/photo-1586864387789-628af9feed72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-size: cover;
   background-position: center;
 }
@@ -66,6 +67,7 @@
   font-size: 17px;
   line-height: 22px;
 }
+
 .addnew-form__input::placeholder {
   color: #5e454b;
 }
@@ -126,22 +128,28 @@
   .addnew-form {
     width: 500px;
   }
+
   .addnew-form__header {
     width: 500px;
   }
+
   .addnew-form__input {
     width: 450px;
   }
+
   .addnew-form__select {
     width: 450px;
   }
+
   .addnew-form__success-label {
     width: 300px;
   }
+
   .addnew-form__header {
     padding-top: 20px;
     padding-bottom: 20px;
   }
+
   .addnew-form__button {
     font-size: 18px;
   }
@@ -153,42 +161,52 @@
     margin-top: 15px;
     margin-bottom: 15px;
   }
+
   .addnew-form {
     width: 800px;
   }
+
   .addnew-form__header {
     width: 800px;
   }
+
   .addnew-form__input {
     width: 650px;
     margin-bottom: 15px;
   }
+
   .addnew-form__select {
     font-size: 18px;
     line-height: 21px;
     width: 650px;
   }
+
   .addnew-form__header {
     padding-top: 40px;
     padding-bottom: 40px;
   }
+
   .addnew-form__header h2 {
     font-size: 42px;
     line-height: 49px;
   }
+
   .addnew-form__header h3 {
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
   }
+
   .addnew-form__input {
     font-size: 18px;
     line-height: 21px;
   }
+
   .addnew-form p {
     font-size: 18px;
     line-height: 21px;
   }
+
   .addnew-form__button {
     font-size: 20px;
   }
