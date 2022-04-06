@@ -103,9 +103,9 @@ export const Details = () => {
         <button className="btn--primary" onClick={() => goBackButton()}>
           Go back
         </button>
-        <button className="btn--primary" onClick={joinRoom}>
+        {/* <button className="btn--primary" onClick={joinRoom}>
           Send a message
-        </button>
+        </button> */}
       </div>
     </div>
   );
