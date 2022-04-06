@@ -101,7 +101,7 @@ export const Profile = () => {
                         </span>
                         <div className="grid-cols-2 mt-2">
                           <label
-                            for="file-upload"
+                            htmlFor="file-upload"
                             className="border border-solid inline-block border-gray-700 px-3 py-2 cursor-pointer"
                           >
                             <i className="fa fa-cloud-upload mr-1 text-lg"></i>
