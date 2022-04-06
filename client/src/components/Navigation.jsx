@@ -4,7 +4,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth } from '../contexts/AuthProvider';
 import { ModalContext } from '../contexts/ModalProvider';
-import Modal from './shared/Modal';
+import Popup from './shared/Popup';
 
 const navigation = [
   { name: 'Feed', to: '/feed', current: false },
@@ -17,12 +17,12 @@ const classNames = (...classes) => {
 
 const Navigation = () => {
   const { setIsLogged, setUser, isLogged, user } = useAuth();
-  const { setVisibility } = useContext(ModalContext);
+  const { setShow } = useContext(ModalContext);
 
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    setVisibility(false);
+    setShow(false);
     localStorage.setItem('uid', '');
     setUser({});
     setIsLogged(false);
@@ -31,7 +31,7 @@ const Navigation = () => {
 
   return (
     <>
-      <Modal>
+      <Popup>
         <h1>You are about to sign out now</h1>
         <div className="flex justify-center mt-3">
           <button
@@ -42,7 +42,7 @@ const Navigation = () => {
             confirm
           </button>
         </div>
-      </Modal>
+      </Popup>
       <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
@@ -176,7 +176,7 @@ const Navigation = () => {
                                 )}
                                 onClick={e => {
                                   e.preventDefault();
-                                  setVisibility(true);
+                                  setShow(true);
                                 }}
                               >
                                 Sign out
