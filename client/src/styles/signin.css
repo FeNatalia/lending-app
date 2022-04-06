@@ -13,8 +13,10 @@
 #signin-page {
   background-color: rgb(65, 65, 65);
   width: 100vw;
-  height: 100vh;
-  display: block;
+  height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #signin-page .auth-content {
   display: grid;

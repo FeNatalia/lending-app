@@ -12,12 +12,12 @@ import { getAuth } from 'firebase/auth';
 // };
 
 const firebaseConfiguration = {
-  apiKey: 'AIzaSyBxqfslJLgBcoXmWduPkUGuDnlwuTEf6gk',
-  authDomain: 'netelixclone.firebaseapp.com',
-  projectId: 'netelixclone',
-  storageBucket: 'netelixclone.appspot.com',
-  messagingSenderId: '31141031733',
-  appId: '1:31141031733:web:860029f0cad4ba6448a67c',
+  apiKey: 'AIzaSyAcX7KodyU8PH4bEDlUDBiRKQ4nPlh3WZ4',
+  authDomain: 'auth-dev-81132.firebaseapp.com',
+  projectId: 'auth-dev-81132',
+  storageBucket: 'auth-dev-81132.appspot.com',
+  messagingSenderId: '190164900032',
+  appId: '1:190164900032:web:7f9f75c5306653937d3525',
 };
 
 const firebaseInstance = initializeApp(firebaseConfiguration);
