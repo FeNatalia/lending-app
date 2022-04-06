@@ -1,9 +1,23 @@
 import React, { useState } from "react";
-import { addItem } from "../api";
+import { addItem, getUser } from "../api";
+import { useCallback, useEffect } from "react";
+import { useAuth } from "../contexts/AuthProvider";
 
 const AddNew = () => {
   const [suceesMessage, setSuceesMessage] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  const { user, setUser, isLogged } = useAuth();
+
+  const fetchUser = useCallback(async () => {
+    const uid = localStorage.getItem("uid");
+    if (uid) {
+      const user = await getUser(uid);
+      setUser(user);
+    }
+  }, [setUser]);
+
+  useEffect(() => fetchUser(), [fetchUser]);
 
   const initialItem = {
     name: "",
@@ -11,6 +25,7 @@ const AddNew = () => {
     category: "",
     city: "",
     image: "",
+    owner: user._id,
   };
 
   const [item, setItem] = useState(initialItem);
