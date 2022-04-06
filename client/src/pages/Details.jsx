@@ -1,16 +1,18 @@
-import { useLocation, useNavigate } from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useCallback, useContext, useEffect, useState } from 'react';
-import { getUser } from '../api';
-import { DataContext } from '../contexts/DataProvider';
+import { useLocation, useNavigate } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useCallback, useContext, useEffect, useState } from "react";
+import { getUser } from "../api";
+import { DataContext } from "../contexts/DataProvider";
+import DM from "../chat/DM";
 
 export const Details = () => {
   let { state } = useLocation();
   let [owner, setOwner] = useState({});
-  const { username, room, setShowChat, socket } = useContext(DataContext);
+  const { username, room, setShowChat, socket, showChat } =
+    useContext(DataContext);
 
   const navigate = useNavigate();
-  const goBackButton = () => navigate('/feed');
+  const goBackButton = () => navigate("/feed");
 
   const fetchUser = useCallback(async () => {
     const itemOwner = await getUser(state.item.owner);
@@ -21,19 +23,19 @@ export const Details = () => {
 
   let itemPosition;
   switch (state.item.city) {
-    case 'Stockholm':
+    case "Stockholm":
       itemPosition = [59.334591, 18.06324];
       break;
-    case 'Malmo':
+    case "Malmo":
       itemPosition = [55.607075, 13.002716];
       break;
-    case 'Gothenburg':
+    case "Gothenburg":
       itemPosition = [57.70887, 11.97456];
       break;
-    case 'Uppsala':
+    case "Uppsala":
       itemPosition = [59.858227, 17.632252];
       break;
-    case 'Lund':
+    case "Lund":
       itemPosition = [55.70466, 13.191007];
       break;
     default:
@@ -42,10 +44,10 @@ export const Details = () => {
   }
 
   const joinRoom = () => {
-    if (username !== '' && room !== '') {
-      socket.emit('join_room', room);
-      setShowChat(true);
-    }
+    // if (username !== "" && room !== "") {
+    socket.emit("join_room", "test_room");
+    setShowChat(true);
+    // }
   };
 
   return (
@@ -85,6 +87,7 @@ export const Details = () => {
         <button className="btn--primary" onClick={joinRoom}>
           Send a message
         </button>
+        {showChat && <DM roomname="test_room" username="User test" />}
       </div>
     </div>
   );
