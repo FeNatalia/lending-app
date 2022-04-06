@@ -19,6 +19,7 @@
 }
 
 .profile-page___form {
+  min-height: 500px;
   margin: 20px;
 }
 @media only screen and (max-width: 768px) {
