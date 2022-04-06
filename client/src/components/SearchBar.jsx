@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
-import { DataContext } from "../contexts/DataProvider";
-import { useNavigate } from "react-router-dom";
-import { getItems } from "../api";
+import React, { useEffect, useContext } from 'react';
+import { DataContext } from '../contexts/DataProvider';
+import { useNavigate } from 'react-router-dom';
+import { getItems } from '../api';
 
 const SearchBar = ({ homeSearch = false }) => {
   const { city, setCity } = useContext(DataContext);
@@ -11,28 +11,28 @@ const SearchBar = ({ homeSearch = false }) => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    getItems(keyword, city, category).then((res) => {
+    getItems(keyword, city, category).then(res => {
       setItems(res);
     });
     if (homeSearch) {
-      return navigate("/feed");
+      return navigate('/feed');
     }
   };
 
   useEffect(() => {
     if (homeSearch) {
-      setKeyword("");
-      setCity("");
-      setCategory("");
+      setKeyword('');
+      setCity('');
+      setCategory('');
       setItems([]);
     }
   }, []);
 
   return (
     <form
-      className="flex flex-col flex-wrap max-w-xl p-7 md:flex-row md:max-w-2xl md:items-center md:p-4 md:justify-center bg-slate-200 gap-2 mx-auto rounded-md shadow-md top-4 mt-5"
+      className="flex flex-col flex-wrap max-w-xl p-7 bg-slate-200 gap-2 mx-auto rounded-md shadow-md top-4 mt-5"
       onSubmit={handleSubmit}
     >
       <label className="text-base font-bold" htmlFor="search">
@@ -44,18 +44,17 @@ const SearchBar = ({ homeSearch = false }) => {
         type="text"
         name="search"
         value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={e => setKeyword(e.target.value)}
         placeholder="what are you searching?"
       />
       <label className="text-base font-bold mt-2 md:mt-0" htmlFor="options">
         Select a location
       </label>
       <select
-        defaultValue=""
         className="p-2 rounded-md shadow-sm bg-white md:p-3"
         id="options"
         value={city}
-        onChange={(e) => setCity(e.target.value)}
+        onChange={e => setCity(e.target.value)}
       >
         <option value="" className="text-gray-400">
           Sweden...
@@ -70,11 +69,10 @@ const SearchBar = ({ homeSearch = false }) => {
         Select a category
       </label>
       <select
-        defaultValue=""
         className="p-2 rounded-md shadow-sm bg-white md:p-3"
         id="options-category"
         value={category}
-        onChange={(e) => setCategory(e.target.value)}
+        onChange={e => setCategory(e.target.value)}
       >
         <option value="" className="text-gray-400">
           Category...
