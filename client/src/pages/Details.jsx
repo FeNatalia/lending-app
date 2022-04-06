@@ -40,33 +40,54 @@ export const Details = () => {
 
   return (
     <div className="details">
-      <div className="details__image">
-        <img src={state.item.image} alt={state.item.name} />
-      </div>
-      <header className="details__header">
-        <h1>Name: {state.item.name}</h1>
-      </header>
-      <section className="details__body">
-        <h2>Description: {state.item.description}</h2>
-        <h2>Location: {state.item.city}</h2>
+      <section className='details__upper'>
+        <div className="details__image">
+          <img src={state.item.image} alt={state.item.name} />
+        </div>
+        <div id="map">
+          <MapContainer center={itemPosition} zoom={10} scrollWheelZoom={false}>
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={itemPosition}>
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
       </section>
-      <div id="map">
-        <MapContainer center={itemPosition} zoom={10} scrollWheelZoom={false}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={itemPosition}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>
-      <section className="details__owner">
-        <h2>Owner info:</h2>
-        <p>Name: {owner.name}</p>
-        <p>email: {owner.email}</p>
+      <section className='details__lower'>
+        <article className="details__body">
+          <div className='details__body-container'>
+            <p className='published-date'>Published on: {state.item.createdAt.split('T')[0]}</p>
+            <h1>{state.item.name}</h1>
+            <h2>{state.item.city}</h2>
+            <h3>Description:</h3>
+            <p>{state.item.description}</p>
+          </div>
+        </article>
+        <article className="details__owner">
+          <div className='owner__wrapper'>
+            <h3>Posted by:</h3>
+            <div className="owner__avatar">
+              <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                <svg
+                  className="h-full w-full text-gray-300"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </span>
+              <p>{owner.name}</p>
+            </div>
+            <div className='details__button'>
+              <a href={`mailto:${owner.email}`}>Contact {owner.name}</a>
+            </div>
+          </div>
+        </article>
       </section>
       <div className="details___button">
         <button className="btn--primary" onClick={() => goBackButton()}>
