@@ -114,7 +114,7 @@ const AddNew = () => {
         <h1>Please Login or Sign up</h1>
         <div className="flex flex-col justify-center mt-3 gap-1">
           <button
-            className="p-2 bg-red-600 text-white uppercase rounded hover:bg-red-800 transition-all duration-200"
+            className="self-center p-2 bg-red-600 text-white uppercase rounded hover:bg-red-800 transition-all duration-200"
             type="submit"
             name="login"
             onClick={handleClick}
@@ -123,7 +123,7 @@ const AddNew = () => {
             login
           </button>
           <button
-            className="p-2 bg-slate-600 text-white uppercase rounded hover:bg-slate-800 transition-all duration-200"
+            className="self-center p-2 bg-slate-600 text-white uppercase rounded hover:bg-slate-800 transition-all duration-200"
             type="submit"
             name="signup"
             onClick={handleClick}
