@@ -110,29 +110,6 @@ const AddNew = () => {
 
   return (
     <>
-      <Modal>
-        <h1>Please Login or Sign up</h1>
-        <div className="flex flex-col justify-center mt-3 gap-1">
-          <button
-            className="self-center p-2 bg-red-600 text-white uppercase rounded hover:bg-red-800 transition-all duration-200"
-            type="submit"
-            name="login"
-            onClick={handleClick}
-          >
-            <i className="fa-solid fa-key mr-2"></i>
-            login
-          </button>
-          <button
-            className="self-center p-2 bg-slate-600 text-white uppercase rounded hover:bg-slate-800 transition-all duration-200"
-            type="submit"
-            name="signup"
-            onClick={handleClick}
-          >
-            <i className="fa-solid fa-user-plus mr-2"></i>
-            signup
-          </button>
-        </div>
-      </Modal>
       <div className="addnew-page-wraper">
         <div className="addnew-page">
           <form onSubmit={handleSubmit} className="addnew-form">
@@ -231,6 +208,29 @@ const AddNew = () => {
           </form>
         </div>
       </div>
+      <Modal>
+        <h1>Please Login or Sign up</h1>
+        <div className="flex flex-col justify-center mt-3 gap-1">
+          <button
+            className="self-center p-2 bg-red-600 text-white uppercase rounded hover:bg-red-800 transition-all duration-200"
+            type="submit"
+            name="login"
+            onClick={handleClick}
+          >
+            <i className="fa-solid fa-key mr-2"></i>
+            login
+          </button>
+          <button
+            className="self-center p-2 bg-slate-600 text-white uppercase rounded hover:bg-slate-800 transition-all duration-200"
+            type="submit"
+            name="signup"
+            onClick={handleClick}
+          >
+            <i className="fa-solid fa-user-plus mr-2"></i>
+            signup
+          </button>
+        </div>
+      </Modal>
     </>
   );
 };
