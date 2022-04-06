@@ -1,45 +1,46 @@
-import React, { useState } from "react";
-import { addItem } from "../api";
+import React, { useState } from 'react';
+import { addItem } from '../api';
 
 const AddNew = () => {
   const [suceesMessage, setSuceesMessage] = useState([]);
+  const [imgUploaded, setimgUploaded] = useState('');
   const [errors, setErrors] = useState([]);
 
   const initialItem = {
-    name: "",
-    description: "",
-    category: "",
-    city: "",
-    image: "",
+    name: '',
+    description: '',
+    category: '',
+    city: '',
+    image: '',
   };
 
   const [item, setItem] = useState(initialItem);
 
-  const validateItem = (item) => {
+  const validateItem = item => {
     setErrors([]);
-    setSuceesMessage("");
+    setSuceesMessage('');
     let isValid = true;
     if (!item.name) {
       isValid = false;
-      setErrors((prev) => [...prev, "Name can't be empty!"]);
+      setErrors(prev => [...prev, "Name can't be empty!"]);
     }
     if (!item.description) {
       isValid = false;
-      setErrors((prev) => [...prev, "Description can't be empty!"]);
+      setErrors(prev => [...prev, "Description can't be empty!"]);
     }
     if (!item.category) {
       isValid = false;
-      setErrors((prev) => [...prev, "Please select a category"]);
+      setErrors(prev => [...prev, 'Please select a category']);
     }
     if (!item.city) {
       isValid = false;
-      setErrors((prev) => [...prev, "Please select a city"]);
+      setErrors(prev => [...prev, 'Please select a city']);
     }
 
     return isValid;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (validateItem(item)) {
       addItem(item);
@@ -50,11 +51,32 @@ const AddNew = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { value, name } = e.target;
     setItem({ ...item, [name]: value });
     setErrors([]);
-    setSuceesMessage("");
+    setSuceesMessage('');
+  };
+
+  const getBase64 = (file, cb) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      cb(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  };
+
+  const handleUpload = e => {
+    let base64String = '';
+    const img = e.target.files[0];
+    getBase64(img, result => {
+      base64String = result;
+      setItem({ ...item, image: base64String });
+      setimgUploaded('Image is uploaded');
+    });
   };
 
   return (
@@ -84,15 +106,6 @@ const AddNew = () => {
               value={item.description}
               onChange={handleChange}
             />
-            <input
-              type="text"
-              className="addnew-form__input"
-              id="addnew-form__image"
-              name="image"
-              placeholder="Image link"
-              value={item.image}
-              onChange={handleChange}
-            />
 
             <label className="addnew-form__label" id="addnew-form__category">
               What is the category ?
@@ -103,7 +116,7 @@ const AddNew = () => {
               name="category"
               onChange={handleChange}
             >
-              <option value=""> {""}Select a category</option>
+              <option value=""> {''}Select a category</option>
               <option value="Electronics">Electronics</option>
               <option value="Tools">Tools</option>
               <option value="Camping">Camping</option>
@@ -126,6 +139,24 @@ const AddNew = () => {
               <option value="Uppsala">Uppsala</option>
               <option value="Lund">Lund</option>
             </select>
+            <input
+              id="file-upload"
+              className="hidden"
+              type="file"
+              onChange={handleUpload}
+            />
+            <label
+              for="file-upload"
+              className="border border-solid inline-block border-gray-700 bg-opacity-70 rounded-md bg-slate-100 px-3 py-1 cursor-pointer mb-6"
+            >
+              <i className="fa fa-cloud-upload mr-1 text-lg"></i>
+              <span className="text-base font-bold"> Upload Picture ...</span>
+              {item.image && imgUploaded && (
+                <span className="text-green-700 ml-8 italic">
+                  {imgUploaded}
+                </span>
+              )}
+            </label>
             <div className="addnew-form__button-wrapper">
               <button className="addnew-form__button" type="submit">
                 Add
@@ -138,7 +169,7 @@ const AddNew = () => {
             )}
             {errors && (
               <label className="addnew-form__error-label">
-                {errors.map((error) => (
+                {errors.map(error => (
                   <p>{error}</p>
                 ))}
               </label>

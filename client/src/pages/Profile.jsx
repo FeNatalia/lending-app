@@ -1,8 +1,32 @@
-import SideBar from "../components/sidebar/SideBar";
-import { useAuth } from "../contexts/AuthProvider";
+import SideBar from '../components/sidebar/SideBar';
+import { useAuth } from '../contexts/AuthProvider';
 
 export const Profile = () => {
-  const { user, isLogged } = useAuth();
+  const { user, isLogged, setUser } = useAuth();
+
+  const getBase64 = (file, cb) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      cb(reader.result);
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+  };
+
+  const handleUpload = e => {
+    let base64String = '';
+    const img = e.target.files[0];
+    getBase64(img, result => {
+      base64String = result;
+      console.log(
+        '🚀 ~ file: Profile.jsx ~ line 23 ~ Profile ~ base64String',
+        base64String,
+      );
+      setUser({ ...user, image: base64String });
+    });
+  };
 
   return (
     <div className="flex">
@@ -65,7 +89,7 @@ export const Profile = () => {
                         />
                       </div>
 
-                      <div className="flex flex-col">
+                      <div className="flex flex-col items-center">
                         <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                           <svg
                             className="h-full w-full text-gray-300"
@@ -75,11 +99,23 @@ export const Profile = () => {
                             <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                           </svg>
                         </span>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Photo
-                        </label>
-                        <div className="mt-1 flex-col sm:flex-1">
-                          <input type="file" className="rounded-md" />
+                        <div className="grid-cols-2 mt-2">
+                          <label
+                            for="file-upload"
+                            className="border border-solid inline-block border-gray-700 px-3 py-2 cursor-pointer"
+                          >
+                            <i className="fa fa-cloud-upload mr-1 text-lg"></i>
+                            <span className="text-sm text-left">
+                              {' '}
+                              Upload Avatar
+                            </span>
+                          </label>
+                          <input
+                            id="file-upload"
+                            className="hidden"
+                            type="file"
+                            onChange={handleUpload}
+                          />
                         </div>
                       </div>
 

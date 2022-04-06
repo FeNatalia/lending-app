@@ -11,7 +11,7 @@ const Feed = () => {
       <SearchBar />
       <section className="feed__card--group">
         {items.length === 0 ? (
-          <div>No item found!</div>
+          <div className="text-lg font-bold p-4">No items found!</div>
         ) : (
           items.map((item, index) => (
             <ItemCard key={item._id} item={item} index={index} />
