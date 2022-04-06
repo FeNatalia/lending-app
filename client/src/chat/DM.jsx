@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useContext } from 'react';
 import { DataContext } from '../contexts/DataProvider.jsx';
 
 const DM = ({ username, roomname }) => {
-  const { socket } = useContext(DataContext);
+  const { socket, randomKey } = useContext(DataContext);
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -49,20 +49,14 @@ const DM = ({ username, roomname }) => {
         {messages.map(i => {
           if (i.username === username) {
             return (
-              <div
-                key={Math.random().toString(36).substring(2, 5)}
-                className="message"
-              >
+              <div key={randomKey()} className="message">
                 <p>{i.text}</p>
                 <span>{i.username}</span>
               </div>
             );
           } else {
             return (
-              <div
-                key={Math.random().toString(36).substring(2, 5)}
-                className="message mess-right"
-              >
+              <div key={randomKey()} className="message mess-right">
                 <p>{i.text} </p>
                 <span>{i.username}</span>
               </div>

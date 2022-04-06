@@ -18,7 +18,10 @@ export const DataProvider = ({ children }) => {
   const [room, setRoom] = useState('');
   const [showChat, setShowChat] = useState(false);
 
+  const randomKey = () => Math.random().toString(36).substring(2);
+
   const value = {
+    randomKey,
     category,
     setCategory,
     city,
