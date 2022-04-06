@@ -146,7 +146,7 @@ const AddNew = () => {
               onChange={handleUpload}
             />
             <label
-              for="file-upload"
+              htmlFor="file-upload"
               className="border border-solid inline-block border-gray-700 bg-opacity-70 rounded-md bg-slate-100 px-3 py-1 cursor-pointer mb-6"
             >
               <i className="fa fa-cloud-upload mr-1 text-lg"></i>
