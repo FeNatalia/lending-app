@@ -1,7 +1,7 @@
 .categories {
   width: 100%;
   display: flex;
-  height: auto;
+  height: 300px;
   flex-flow: wrap;
   margin: 25px auto;
   box-sizing: border-box;
@@ -13,6 +13,4 @@
   height: auto;
   justify-content: flex-start;
   flex-direction: row;
-}
-.category-item {
 }
