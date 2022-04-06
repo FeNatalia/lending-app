@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../components/InputField';
 import fields from '../data/fields-login.json';
-import { signIn } from '../auth/authentication';
+import { signIn, signInWithGoogle } from '../auth/authentication';
 import { useAuth } from '../contexts/AuthProvider';
+import { addUser } from '../api';
 
 const Login = () => {
   const { setIsLogged } = useAuth();
@@ -30,8 +31,27 @@ const Login = () => {
     navigate('/profile');
   };
 
+  const onGoogleSignIn = async user => {
+    const newUser = {
+      name: user.displayName,
+      email: user.email,
+      uid: user.uid,
+      avatar: user.photoURL,
+    };
+    await addUser(newUser);
+    setIsLogged(true);
+    localStorage.setItem('uid', user.uid);
+    navigate('/profile');
+  };
+
   const onFailure = message => {
     setErrorMessage(message);
+  };
+
+  const handleGoogle = async () => {
+    setErrorMessage('');
+    const account = await signInWithGoogle();
+    account.isLogged ? onGoogleSignIn(account) : onFailure(account);
   };
 
   const InputFields = fields.map(item => (
@@ -51,7 +71,15 @@ const Login = () => {
           <form id="signin-form" onSubmit={onSubmit}>
             {InputFields}
             <p>{errorMassage}</p>
-            <button>Sign In</button>
+            <button>
+              {' '}
+              <i className="fa-solid fa-envelope mr-3"></i>Sign in with Email
+            </button>
+            <div>
+              <button className="button" onClick={handleGoogle}>
+                <i className="fab fa-google mr-3"></i>Sign in with Google
+              </button>
+            </div>
             <small>New to LenderApp?</small>
             <Link to="/signup">Sign up now</Link>
           </form>

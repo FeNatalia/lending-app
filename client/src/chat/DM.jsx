@@ -9,6 +9,10 @@ const DM = ({ username, roomname }) => {
 
   socket.open();
 
+  socket.onAny((event, ...args) => {
+    console.log(event, args);
+  });
+
   useEffect(() => {
     const unsubscribe = socket.on('message', data => {
       const ans = decrypt(data);
@@ -71,9 +75,7 @@ const DM = ({ username, roomname }) => {
           value={text}
           onChange={e => setText(e.target.value)}
           onKeyPress={e => {
-            if (e.key === 'Enter') {
-              sendData();
-            }
+            e.key === 'Enter' && sendData();
           }}
         ></input>
         <button onClick={sendData}>Send</button>

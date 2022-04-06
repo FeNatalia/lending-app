@@ -2,10 +2,13 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
 } from 'firebase/auth';
 
 // Project files
 import { authInstance } from './firebase';
+const provider = new GoogleAuthProvider();
 
 export const createAccount = async (email, password) => {
   const account = { isCreated: false, payload: '' };
@@ -41,4 +44,20 @@ export const signIn = async (email, password) => {
   }
 
   return account;
+};
+
+export const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(authInstance, provider);
+    GoogleAuthProvider.credentialFromResult(result);
+    const user = result.user;
+    user.isLogged = true;
+    return user;
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    return { errorCode, errorMessage, email, credential };
+  }
 };
