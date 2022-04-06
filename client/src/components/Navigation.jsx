@@ -113,12 +113,6 @@ const Navigation = () => {
                       <i className="fa-solid fa-user mr-1"></i>Login
                     </button>
                   )}
-                  {/* Hello , User! */}
-                  {isLogged && (
-                    <div className="navigation-greeting-wrapper">
-                      <h1 className="navigation-greeting">Hello, {user.name} !</h1>
-                    </div>)}
-
                   {/* Profile dropdown */}
                   {isLogged && (
                     <Menu as="div" className="ml-3 relative">
