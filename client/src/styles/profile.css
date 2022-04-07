@@ -5,25 +5,48 @@
   color: white;
 }
 
-/*Profile*/
-#profile-page {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
 #profile-page-wrapper {
   display: flex;
   width: 100vw;
   background-color: #fdf6ec;
 }
-
+.form-profile {
+  width: 400px;
+  height: 400px;
+  /* background-color: rgb(255, 253, 253); */
+  padding: 40px 45px;
+  border-radius: 5px;
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.202); */
+}
 .profile-page___form {
-  min-height: 500px;
-  margin: 20px;
+  margin: 70px 300px;
+}
+.profile__label {
+  color: gray;
+  font-size: 16px;
+  margin: 10px;
+}
+.formInput__profile {
+  width: 400px;
+  height: 70px;
+  box-shadow: 0 0 0 1px rgb(161 161 161);
+  border: none;
+  color: rgb(58, 58, 58);
+  border-radius: 5px;
+  margin-bottom: 18px;
+  margin-top: 10px;
 }
 @media only screen and (max-width: 768px) {
   #profile-page-wrapper {
     display: block;
+  }
+  .profile-page___form {
+    margin: unset;
+  }
+  .formInput__profile {
+    width: 300px;
+  }
+  .form-profile {
+    width: unset;
   }
 }
