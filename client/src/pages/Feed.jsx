@@ -8,7 +8,7 @@ const Feed = () => {
 
   return (
     <div className="feed">
-      <SearchBar />
+      <SearchBar classes="mx-10 md:mx-auto sm:mx-auto lg:mx-auto" />
       <section className="feed__card--group">
         {items.length === 0 ? (
           <div className="text-lg font-bold p-4">No items found!</div>

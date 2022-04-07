@@ -3,7 +3,7 @@ import { DataContext } from '../contexts/DataProvider';
 import { useNavigate } from 'react-router-dom';
 import { getItems } from '../api';
 
-const SearchBar = ({ homeSearch = false }) => {
+const SearchBar = ({ homeSearch = false, classes }) => {
   const {
     setItems,
     category,
@@ -37,7 +37,7 @@ const SearchBar = ({ homeSearch = false }) => {
 
   return (
     <form
-      className="flex flex-col flex-wrap flex-auto max-w-xl mx-auto p-7 bg-slate-200 gap-2 rounded-md shadow-md top-4 mt-5"
+      className={`${classes} flex flex-col flex-wrap flex-auto max-w-xl p-7 bg-slate-200 gap-2 rounded-md shadow-md top-4 mt-5`}
       onSubmit={handleSubmit}
     >
       <label className="text-base font-bold" htmlFor="search">
@@ -92,8 +92,8 @@ const SearchBar = ({ homeSearch = false }) => {
         className="rounded-md bg-green-700 border-solid border-2 border-green-700 text-white p-2 mt-2 text-lg hover:bg-white hover:text-green-700 transition-all duration-300 md:px-2 md:mt-0 md:py-1 shadow-sm"
         type="submit"
       >
-        <i className="fa-solid fa-magnifying-glass mr-2 md:mr-0"></i>
-        <p className="sm:hidden inline">Search</p>
+        <i className="fa-solid fa-magnifying-glass mr-2"></i>
+        <p className="inline">Search</p>
       </button>
     </form>
   );
