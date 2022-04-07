@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('./config/db.js');
+const { instrument } = require('@socket.io/admin-ui');
 const cors = require('cors');
 const app = express();
 const server = require('http').createServer(app);
@@ -13,9 +14,9 @@ const io = new Server(server, {
     origin: '*',
     methods: ['GET', 'POST'],
     transports: ['websocket', 'polling'],
-    allowedHeaders: ['Access-Control-Allow-Origin'],
+    // allowedHeaders: ['Access-Control-Allow-Origin'],
   },
-  allowEIO4: true,
+  allowEIO3: true,
 });
 
 const itemRoutes = require('./routes/itemRoutes');
@@ -44,6 +45,8 @@ app.use('*', (_req, res) => {
 app.use(errorHandler);
 app.use(globalErrorHandler);
 
+instrument(io, { auth: false });
+
 server.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
@@ -51,8 +54,9 @@ server.listen(port, () => {
 io.on('connection', socket => {
   console.log('a user connected');
 
-  socket.on('chat', text => {
-    socket.emit('message', text);
+  socket.on('send_message', data => {
+    console.log(data);
+    socket.emit('receive_message', data);
   });
 });
 
