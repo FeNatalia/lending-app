@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import SearchBar from '../components/SearchBar';
 import ItemCard from '../components/shared/ItemCard';
 import { DataContext } from '../contexts/DataProvider';
+import { getItems } from '../api';
 
 const Feed = () => {
-  const { items } = useContext(DataContext);
+  const { items, setItems, keyword, city, category } = useContext(DataContext);
+
+  useEffect(() => {
+    getItems(keyword, city, category).then(res => {
+      setItems(res);
+    });
+  }, [category, city, items, keyword, setItems]);
 
   return (
     <div className="feed">
