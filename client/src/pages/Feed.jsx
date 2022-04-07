@@ -11,7 +11,7 @@ const Feed = () => {
     getItems(keyword, city, category).then(res => {
       setItems(res);
     });
-  }, [category, city, items, keyword, setItems]);
+  }, []);
 
   return (
     <div className="feed">
