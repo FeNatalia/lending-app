@@ -27,7 +27,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
-  background-image: url("https://images.unsplash.com/photo-1586864387789-628af9feed72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-image: url('https://images.unsplash.com/photo-1586864387789-628af9feed72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
   background-size: cover;
   background-position: center;
 }
@@ -112,15 +112,20 @@
 }
 
 .addnew-form__button {
-  width: 120px;
-  padding: 6px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid green;
+  color: white;
   font-weight: bold;
-  border: 2px solid #045e3e;
-  color: #045e3e;
-  background-color: #c9e4c5;
-  box-shadow: 0 0 5px;
+  border-radius: 8px;
+  background-color: green;
+  width: 150px;
+}
+
+.addnew-form__button:hover {
+  color: green;
+  background-color: white;
+  transition: all ease 0.3s;
 }
 
 /* Tablet */

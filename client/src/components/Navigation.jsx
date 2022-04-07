@@ -98,9 +98,10 @@ const Navigation = () => {
                   <Link to="/add-item">
                     <button
                       type="button"
-                      className="bg-red-700 p-1 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="bg-green-700 p-1 rounded-full text-white hover:text-green-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       {/* Lend/Borrow */}
+
                       <span className="sr-only">Lend/Borrow an Item</span>
                       <PlusIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
@@ -108,7 +109,7 @@ const Navigation = () => {
                   {!isLogged && (
                     <button
                       onClick={() => navigate('/login')}
-                      className="ml-2 bg-red-700 p-2 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="ml-2 bg-green-700 p-2 rounded-full text-white hover:text-green-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       <i className="fa-solid fa-user mr-1"></i>Login
                     </button>
