@@ -51,8 +51,14 @@ server.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
 
+global.onlineUsers = new Map();
+
 io.on('connection', socket => {
+  global.chatSocket = socket;
   console.log('a user connected');
+  socket.on('add-user', userId => {
+    onlineUsers.set(userId, socket.id);
+  });
 
   socket.on('send_message', data => {
     console.log(data);
