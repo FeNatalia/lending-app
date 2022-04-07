@@ -1,9 +1,11 @@
 import { encrypt, decrypt } from '../encryption';
 import { useState, useEffect, useRef, useContext } from 'react';
 import { DataContext } from '../contexts/DataProvider.jsx';
+import { useAuth } from '../contexts/AuthProvider';
 
 const DM = ({ username, roomname }) => {
   const { socket, randomKey } = useContext(DataContext);
+  const { user } = useAuth();
   const [text, setText] = useState('');
   const [messages, setMessages] = useState([]);
 
@@ -14,26 +16,34 @@ const DM = ({ username, roomname }) => {
   });
 
   useEffect(() => {
-    const unsubscribe = socket.on('message', data => {
-      const ans = decrypt(data);
-      const msg = {
-        userId: data.userId,
-        username: data.username,
-        text: ans,
-      };
-      setMessages(m => [...m, msg]);
+    const unsubscribe = socket.on('receive_message', data => {
+      const text = decrypt(data.message);
+      data.message = text;
+      console.log(text);
+      setMessages(m => [...m, data]);
     });
 
     return unsubscribe;
   }, [socket]);
 
-  const sendData = () => {
-    if (text) {
-      const ans = encrypt(text);
-      socket.emit('chat', ans);
+  const sendData = async () => {
+    if (text !== '') {
+      const aes256 = encrypt(text);
+      const messageData = {
+        room: socket.id,
+        author: user.name,
+        message: aes256,
+        time:
+          new Date(Date.now()).getHours() +
+          ':' +
+          new Date(Date.now()).getMinutes(),
+      };
+
+      await socket.emit('send_message', messageData);
       setText('');
     }
   };
+
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -44,25 +54,20 @@ const DM = ({ username, roomname }) => {
 
   return (
     <div className="chat">
-      <div className="user-name">
-        <h2>
-          {username} <span style={{ fontSize: '1rem' }}>in {roomname}</span>
-        </h2>
-      </div>
       <div className="chat-message">
         {messages.map(i => {
-          if (i.username === username) {
+          if (i.author === username) {
             return (
               <div key={randomKey()} className="message">
-                <p>{i.text}</p>
-                <span>{i.username}</span>
+                <p>{i.message}</p>
+                <span>{i.author}</span>
               </div>
             );
           } else {
             return (
               <div key={randomKey()} className="message mess-right">
-                <p>{i.text} </p>
-                <span>{i.username}</span>
+                <p>{i.message} </p>
+                <span>{i.author}</span>
               </div>
             );
           }

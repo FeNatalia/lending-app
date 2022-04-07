@@ -37,7 +37,7 @@ const SearchBar = ({ homeSearch = false }) => {
 
   return (
     <form
-      className="flex flex-col flex-wrap max-w-xl p-7 bg-slate-200 gap-2 mx-auto rounded-md shadow-md top-4 mt-5"
+      className="flex flex-col flex-wrap flex-auto max-w-xl mx-auto p-7 bg-slate-200 gap-2 rounded-md shadow-md top-4 mt-5"
       onSubmit={handleSubmit}
     >
       <label className="text-base font-bold" htmlFor="search">
@@ -45,7 +45,7 @@ const SearchBar = ({ homeSearch = false }) => {
       </label>
       <input
         id="search"
-        className="p-2 rounded-md accent-slate-500 shadow-sm md:p-3 md:mr-3"
+        className="p-2 rounded-md accent-slate-500 shadow-sm md:p-3"
         type="text"
         name="search"
         value={keyword}

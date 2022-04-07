@@ -196,7 +196,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="p-4 text-sm bg-slate-800 flex items-center justify-center gap-8 sm:flex sm:flex-col">
+      <div className="p-4 text-sm bg-slate-800 flex items-center justify-center gap-8 flex-wrap">
         <p>&copy; 2021 Copyright</p>
         <p className="flex items-center justify-center">
           Made with{' '}
