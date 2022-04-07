@@ -5,11 +5,6 @@
   cursor: pointer;
   margin: 25px 15px;
 }
-.Category__Card:hover {
-  padding: 10px 0 15px;
-  width: 215px;
-  height: 215px;
-}
 
 .card-img-top {
   width: 100%;
@@ -19,18 +14,7 @@
   border-radius: 8px;
   margin-right: 16px;
 }
-.card-img-top:hover {
-  /* width: 215px;
-  height: 165px; */
-  transform: translateZ(0);
-  transition-duration: 0.5s;
-  transition-property: transform;
-}
-.card-img-top:hover,
-.card-img-top:focus,
-.card-img-top:active {
-  transform: scale(1.1);
-}
+
 .Category__name {
   text-align: center;
   margin: 22px;

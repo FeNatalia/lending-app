@@ -2,6 +2,7 @@
   min-height: calc(100vh - 62px);
   background-color: #fdf6ec;
 }
+
 .feed__card--group {
   background-color: #fdf6ec;
   display: flex;

@@ -33,10 +33,7 @@ const Categories = () => {
   return (
     <section className="categories">
       {categoriesList.map(item => (
-        <Category
-          key={Math.random().toString(36).substring(2, 5)}
-          item={item}
-        />
+        <Category key={Math.random().toString(36).substring(2)} item={item} />
       ))}
     </section>
   );
