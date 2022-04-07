@@ -4,6 +4,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth } from '../contexts/AuthProvider';
 import { ModalContext } from '../contexts/ModalProvider';
+import logo from '../static/logo.svg';
+import logoDesktop from '../static/logo-text-w.svg';
 import Popup from './shared/Popup';
 
 const navigation = [
@@ -63,13 +65,13 @@ const Navigation = () => {
                   <Link to="/">
                     <div className="flex-shrink-0 flex items-center">
                       <img
-                        className="block lg:hidden h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                        className="block lg:hidden h-10 w-auto"
+                        src={logo}
                         alt="Workflow"
                       />
                       <img
                         className="hidden lg:block h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                        src={logoDesktop}
                         alt="Workflow"
                       />
                     </div>
@@ -98,9 +100,10 @@ const Navigation = () => {
                   <Link to="/add-item">
                     <button
                       type="button"
-                      className="bg-red-700 p-1 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="bg-green-700 p-1 rounded-full text-white hover:text-green-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       {/* Lend/Borrow */}
+
                       <span className="sr-only">Lend/Borrow an Item</span>
                       <PlusIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
@@ -108,7 +111,7 @@ const Navigation = () => {
                   {!isLogged && (
                     <button
                       onClick={() => navigate('/login')}
-                      className="ml-2 bg-red-700 p-2 rounded-full text-white hover:text-red-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="ml-2 bg-green-700 p-2 rounded-full text-white hover:text-green-700 hover:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       <i className="fa-solid fa-user mr-1"></i>Login
                     </button>

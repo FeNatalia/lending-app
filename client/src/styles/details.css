@@ -1,161 +1,174 @@
 /*Details.jsx*/
 .leaflet-container {
-    width: 300px;
-    height: 200px;
-    border-radius: 8px;
+  width: 300px;
+  height: 200px;
+  border-radius: 8px;
 }
 
 #map {
-    height: 200px;
+  height: 200px;
 }
 
 .details {
-    margin: 10px;
-    padding: 10px;
-    display: grid;
-    justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  justify-content: center;
 }
 
 .details__header {
-    text-align: center;
-    margin: 10px;
+  text-align: center;
+  margin: 10px;
 }
 
 .details__image {
-    display: grid;
-    justify-content: center;
-    margin-bottom: 10px;
+  display: grid;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .details__image img {
-    width: 300px;
-    height: 200px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
 }
 
 .details__header h1 {
-    margin: 10px;
+  margin: 10px;
 }
 
 .details__body {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .details__body h1 {
-    font-size: 30px;
-    margin-top: 10px;
-    margin-left: 5px;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 .details__body h2 {
-    margin-top: 10px;
-    margin-left: 5px;
-    font-size: 22px;
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 22px;
 }
 
 .details__body h3 {
-    margin-top: 10px;
-    margin-left: 5px;
-    font-size: 18px;
+  margin-top: 10px;
+  margin-left: 5px;
+  font-size: 18px;
 }
 
 .details__body p {
-    margin: 5px;
-    font-size: 16px;
-    font-weight: 100;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: 100;
 }
 
 .published-date {
-    font-style: italic;
+  font-style: italic;
 }
 
 .details___button {
-    text-align: center;
-    margin: 10px;
+  text-align: center;
+  margin: 10px;
 }
 
 .btn--primary {
-    padding: 5px;
-    font-size: 18px;
-    border: 2px solid green;
-    color: green;
-    font-weight: bold;
-    border-radius: 8px;
-    background-color: white;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid green;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: green;
+}
+
+.btn--primary:hover {
+  color: green;
+  background-color: white;
+  transition: all ease 0.3s;
 }
 
 .owner__wrapper {
-    width: 250px;
-    background-color: white;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 0 3px rgba(177, 175, 175, 0.565);
+  width: 250px;
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 3px rgba(177, 175, 175, 0.565);
 }
 
 .details__body-container {
-    width: 280px;
-    margin: 10px;
-    padding: 10px;
+  width: 280px;
+  margin: 10px;
+  padding: 10px;
 }
 
 .details__owner {
-    display: grid;
-    justify-content: center;
-    text-align: center;
+  display: grid;
+  justify-content: center;
+  text-align: center;
 }
 
 .details__owner a {
-    width: 150px;
-    padding: 10px;
-    color: white;
-    background-color: rgb(226, 81, 81);
-    border-radius: 6px;
+  width: 150px;
+  padding: 10px;
+  color: white;
+  border: 2px solid rgb(226, 81, 81);
+  background-color: rgb(226, 81, 81);
+  border-radius: 6px;
+}
+
+.details__owner a:hover {
+  background-color: white;
+  color: rgb(226, 81, 81);
+  transition: all ease 0.3s;
 }
 
 .details__button {
-    margin: 10px;
-    display: grid;
-    justify-content: center;
+  margin: 10px;
+  display: grid;
+  justify-content: center;
 }
 
 .owner__avatar {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px;
 }
 
 .owner__avatar p {
-    margin-left: 10px;
-    font-weight: 800;
-    font-size: 18px;
+  margin-left: 10px;
+  font-weight: 800;
+  font-size: 18px;
 }
 
 .details__upper {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 .details__lower {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
 
 /*Desktop queries*/
 @media (min-width: 700px) {
-    .details__upper {
-        display: flex;
-    }
+  .details__upper {
+    display: flex;
+  }
 
-    .details__lower {
-        display: flex;
-    }
+  .details__lower {
+    display: flex;
+  }
 
-    .details__image {
-        margin-right: 10px;
-    }
+  .details__image {
+    margin-right: 10px;
+  }
 }
