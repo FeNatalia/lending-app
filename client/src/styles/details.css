@@ -1,12 +1,12 @@
 /*Details.jsx*/
 .leaflet-container {
-    width: 280px;
-    height: 150px;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
 }
 
 #map {
-    height: 180px;
-    margin-left: 10px;
+    height: 200px;
 }
 
 .details {
@@ -24,11 +24,15 @@
 .details__image {
     display: grid;
     justify-content: center;
+    margin-bottom: 10px;
 }
 
 .details__image img {
     width: 300px;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
 }
 
 .details__header h1 {
@@ -36,13 +40,36 @@
 }
 
 .details__body {
-    margin: 10px;
+    display: grid;
+    justify-content: center;
+}
+
+.details__body h1 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.details__body h2 {
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 22px;
+}
+
+.details__body h3 {
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 18px;
 }
 
 .details__body p {
     margin: 5px;
     font-size: 16px;
     font-weight: 100;
+}
+
+.published-date {
+    font-style: italic;
 }
 
 .details___button {
@@ -58,4 +85,77 @@
     font-weight: bold;
     border-radius: 8px;
     background-color: white;
+}
+
+.owner__wrapper {
+    width: 250px;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(177, 175, 175, 0.565);
+}
+
+.details__body-container {
+    width: 280px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.details__owner {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.details__owner a {
+    width: 150px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(226, 81, 81);
+    border-radius: 6px;
+}
+
+.details__button {
+    margin: 10px;
+    display: grid;
+    justify-content: center;
+}
+
+.owner__avatar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px;
+}
+
+.owner__avatar p {
+    margin-left: 10px;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.details__upper {
+    display: grid;
+    justify-content: center;
+}
+
+.details__lower {
+    display: grid;
+    justify-content: center;
+}
+
+/*Desktop queries*/
+@media (min-width: 700px) {
+    .details__upper {
+        display: flex;
+    }
+
+    .details__lower {
+        display: flex;
+    }
+
+    .details__image {
+        margin-right: 10px;
+    }
 }
