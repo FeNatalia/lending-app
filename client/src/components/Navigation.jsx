@@ -4,6 +4,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { PlusIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useAuth } from '../contexts/AuthProvider';
 import { ModalContext } from '../contexts/ModalProvider';
+import logo from '../static/logo.svg';
+import logoDesktop from '../static/logo-text-w.svg';
 import Popup from './shared/Popup';
 
 const navigation = [
@@ -63,13 +65,13 @@ const Navigation = () => {
                   <Link to="/">
                     <div className="flex-shrink-0 flex items-center">
                       <img
-                        className="block lg:hidden h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                        className="block lg:hidden h-10 w-auto"
+                        src={logo}
                         alt="Workflow"
                       />
                       <img
                         className="hidden lg:block h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                        src={logoDesktop}
                         alt="Workflow"
                       />
                     </div>
