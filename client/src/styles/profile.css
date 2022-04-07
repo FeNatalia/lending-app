@@ -40,4 +40,13 @@
   #profile-page-wrapper {
     display: block;
   }
+  .profile-page___form {
+    margin: unset;
+  }
+  .formInput__profile {
+    width: 300px;
+  }
+  .form-profile {
+    width: unset;
+  }
 }
