@@ -18,7 +18,8 @@ jobs:
       - name: build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_KEY }}
-        
+
+      - name: set REACT env vars
         env:
           HD_REACT_APP_FIREBASE_API_KEY: ${{ secrets.REACT_APP_FIREBASE_API_KEY}}
           HD_REACT_APP_FIREBASE_AUTH_DOMAIN: ${{ secrets.REACT_APP_FIREBASE_AUTH_DOMAIN}}
