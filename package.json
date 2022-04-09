@@ -4,6 +4,8 @@
   "description": "Lending application",
   "main": "index.js",
   "scripts": {
+    "prestart": "npm --prefix ./client run build",
+    "start": "npm --prefix ./server start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

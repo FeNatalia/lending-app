@@ -18,6 +18,4 @@ RUN npm install
 
 COPY server/. .
 
-ENV NODE_ENV=production
-
 CMD ["npm", "start"]
