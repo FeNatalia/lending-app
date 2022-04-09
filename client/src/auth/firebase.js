@@ -12,7 +12,7 @@ import { getAuth } from 'firebase/auth';
 // };
 
 const firebaseConfiguration = {
-  apiKey: 'AIzaSyAcX7KodyU8PH4bEDlUDBiRKQ4nPlh3WZ4',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: 'auth-dev-81132.firebaseapp.com',
   projectId: 'auth-dev-81132',
   storageBucket: 'auth-dev-81132.appspot.com',
