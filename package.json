@@ -1,0 +1,22 @@
+{
+  "name": "lending-app",
+  "version": "1.0.0",
+  "description": "Lending application",
+  "main": "index.js",
+  "scripts": {
+    "setup": "npm --prefix ./client i & npm --prefix ./server i",
+    "prestart": "npm --prefix ./client run build",
+    "start": "npm --prefix ./server start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FeNatalia/lending-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FeNatalia/lending-app/issues"
+  },
+  "homepage": "https://github.com/FeNatalia/lending-app#readme"
+}

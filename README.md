@@ -27,6 +27,7 @@ You will need to create an account to have access to all services of the website
 ![system uml](screenshot-uml.png)
 
 ## Setup
+
 Our development environment for a full-stack web application will consist of three main parts:
 
 1. Database (MongoDB).
@@ -34,35 +35,45 @@ Our development environment for a full-stack web application will consist of thr
 3. Frontend development server (React).
 
 ### Prerequisites
-To run our app locally, you will need to add a .env file with an API key to your MongoDB database.
+
+To run our app locally, you will need to add a .env file with an API key to your MongoDB database in `server` root folder
+and a .env.local file in `client` root folder with your Firebase configuration variables.
 
 ### Starting the backend server
+
 Open the directory `server` and run
+
 ```
 npm install
 ```
+
 to install all the dependencies needed for the project.
 
 Then start the server by running
+
 ```
 npm start
 ```
 
 ### Starting the frontend development server
-The frontend application is in the directory `client`. From there, run 
+
+The frontend application is in the directory `client`. From there, run
+
 ```
 npm install
 ```
+
 to install all the dependencies needed for the project.
 
 Then start the frontend application by running
+
 ```
 npm start
 ```
 
 ## REST API
 
-We have implemented API in NodeJS, ExpressJS with MongoDB database. 
+We have implemented API in NodeJS, ExpressJS with MongoDB database.
 
 # User Manual
 
@@ -71,12 +82,14 @@ We have implemented API in NodeJS, ExpressJS with MongoDB database.
 Users can Sign up via entering Name, Email and password when they are not registered.
 
 ### Feed page
-As soon Users register, It lands to home page, where they can search 
+
+As soon Users register, It lands to home page, where they can search
 and then see posts of the available items on the feed page.
 
 ![home page](screenshot-home.png)
 
 ### Item details
+
 When you click on one of the items, a details page would appear with the information like
 description, date, a map, etc.
 
@@ -93,7 +106,6 @@ User can find the vision and mission of our app in the above page. This page can
 ### Contact page
 
 User can contact the community via contact-form for some question or suggestions, accessible via my profile.
-
 
 # Author
 
