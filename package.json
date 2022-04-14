@@ -4,7 +4,8 @@
   "description": "Lending application",
   "main": "index.js",
   "scripts": {
-    "setup": "npm --prefix ./client i & npm --prefix ./server i",
+    "presetup": "npm --prefix ./client i",
+    "setup": "npm --prefix ./server i",
     "prestart": "npm --prefix ./client run build",
     "start": "npm --prefix ./server start"
   },
