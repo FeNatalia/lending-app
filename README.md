@@ -58,7 +58,7 @@ To start the application run these commands respectively in the `root` folder:
    ```
 
 2. ```
-   npm run start
+   npm start
    ```
 
 ### 2. Serve Frontend and Backend separately
