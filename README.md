@@ -53,9 +53,13 @@ The application can be run locally
 
 To start the application run these commands respectively in the `root` folder:
 
-1. `npm run setup`
+1. ```
+   npm run setup
+   ```
 
-2. `npm run start`
+2. ```
+   npm run start
+   ```
 
 ### 2. Serve Frontend and Backend separately
 
@@ -64,7 +68,9 @@ To start the application run these commands respectively in the `root` folder:
 Open the directory `server` and run
 
 ```
+
 npm install
+
 ```
 
 to install all the dependencies needed for the project.
@@ -72,7 +78,9 @@ to install all the dependencies needed for the project.
 Then start the server by running
 
 ```
+
 npm start
+
 ```
 
 #### Starting the frontend development server
@@ -80,7 +88,9 @@ npm start
 The frontend application is in the directory `client`. From there, run
 
 ```
+
 npm install
+
 ```
 
 to install all the dependencies needed for the project.
@@ -88,7 +98,9 @@ to install all the dependencies needed for the project.
 Then start the frontend application by running
 
 ```
+
 npm start
+
 ```
 
 ### 3. Build a Docker image and run in a container
@@ -102,13 +114,15 @@ Open up the _terminal_ in the project's `root` folder and run the following comm
    ```
 
 2. ```
-      docker run -e "MONGO_DB_URL=<your-mongodb-url>" -p <your-desired-port>:8080 <your-image-name>
+   docker run -e "MONGO_DB_URL=<your-mongodb-url>" -p <your-desired-port>:8080 <your-image-name>
    ```
    Placeholder values should be edited with relevant information.
 
 ## REST API
 
 We have implemented API in NodeJS, ExpressJS with MongoDB database.
+
+---
 
 # User Manual
 
