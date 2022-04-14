@@ -68,9 +68,7 @@ To start the application run these commands respectively in the `root` folder:
 Open the directory `server` and run
 
 ```
-
 npm install
-
 ```
 
 to install all the dependencies needed for the project.
@@ -78,9 +76,7 @@ to install all the dependencies needed for the project.
 Then start the server by running
 
 ```
-
 npm start
-
 ```
 
 #### Starting the frontend development server
@@ -88,9 +84,7 @@ npm start
 The frontend application is in the directory `client`. From there, run
 
 ```
-
 npm install
-
 ```
 
 to install all the dependencies needed for the project.
@@ -98,9 +92,7 @@ to install all the dependencies needed for the project.
 Then start the frontend application by running
 
 ```
-
 npm start
-
 ```
 
 ### 3. Build a Docker image and run in a container
