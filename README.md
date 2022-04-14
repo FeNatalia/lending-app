@@ -43,7 +43,7 @@ and a .env.local file in `client` root folder with your Firebase configuration v
 
 ## App running options:
 
-The application can be run
+The application can be run locally
 
 - _as a fullstack app,_
 - _starting client and server separately on different ports_
