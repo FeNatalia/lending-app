@@ -41,7 +41,7 @@ and a .env.local file in `client` root folder with your Firebase configuration v
 
 ---
 
-## App running options:
+## App running options for local environment:
 
 The application can be run locally
 
