@@ -99,7 +99,7 @@ npm start
 
 <mark>**_NB: Docker Desktop must be installed for this option!_**</mark>
 
-Open up the _terminal_ in the project's `root` folder and run the following commands respectively:
+Open up _terminal_ in the project's `root` folder and run the following commands respectively:
 
 1. ```
    docker build --build-arg REACT_APP_FIREBASE_API_KEY=<your-firebase-config> --build-arg REACT_APP_FIREBASE_AUTH_DOMAIN=<your-firebase-config> --build-arg REACT_APP_FIREBASE_PROJECT_ID=<your-firebase-config> --build-arg REACT_APP_FIREBASE_STORAGE_BCKT=<your-firebase-config> --build-arg REACT_APP_FIREBASE_MSG_SENDER_ID=<your-firebase-config> --build-arg REACT_APP_FIREBASE_APP_ID=<your-firebase-config> -t app .
