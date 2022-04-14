@@ -1,4 +1,4 @@
-FROM node:14-alpine
+FROM node:lts-alpine as build-stage
 
 WORKDIR /app/client
 
@@ -20,6 +20,9 @@ RUN npm run build
 WORKDIR /app/server
 
 COPY server/package*.json ./
+
+# Install Python to resolve build issue on some macOS versions
+RUN apk add --no-cache python3 py3-pip make gcc libsass g++
 
 RUN npm install
 

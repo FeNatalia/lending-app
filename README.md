@@ -39,7 +39,27 @@ Our development environment for a full-stack web application will consist of thr
 To run our app locally, you will need to add a .env file with an API key to your MongoDB database in `server` root folder
 and a .env.local file in `client` root folder with your Firebase configuration variables.
 
-### Starting the backend server
+---
+
+## App running options:
+
+The application can be run
+
+- _as a fullstack app,_
+- _starting client and server separately on different ports_
+- _as a docker image in a container._
+
+### 1. Start as a fullstack application
+
+To start the application run these commands respectively in the `root` folder:
+
+1. `npm run setup`
+
+2. `npm run start`
+
+### 2. Serve Frontend and Backend separately
+
+#### Starting the backend server
 
 Open the directory `server` and run
 
@@ -55,7 +75,7 @@ Then start the server by running
 npm start
 ```
 
-### Starting the frontend development server
+#### Starting the frontend development server
 
 The frontend application is in the directory `client`. From there, run
 
@@ -70,6 +90,21 @@ Then start the frontend application by running
 ```
 npm start
 ```
+
+### 3. Build a Docker image and run in a container
+
+<mark>**_NB: Docker Desktop must be installed for this option!_**</mark>
+
+Open up the _terminal_ in the project's `root` folder and run the following commands respectively:
+
+1. ```
+   docker build --build-arg REACT_APP_FIREBASE_API_KEY=<your-firebase-config> --build-arg REACT_APP_FIREBASE_AUTH_DOMAIN=<your-firebase-config> --build-arg REACT_APP_FIREBASE_PROJECT_ID=<your-firebase-config> --build-arg REACT_APP_FIREBASE_STORAGE_BCKT=<your-firebase-config> --build-arg REACT_APP_FIREBASE_MSG_SENDER_ID=<your-firebase-config> --build-arg REACT_APP_FIREBASE_APP_ID=<your-firebase-config> -t app .
+   ```
+
+2. ```
+      docker run -e "MONGO_DB_URL=<your-mongodb-url>" -p <your-desired-port>:8080 <your-image-name>
+   ```
+   Placeholder values should be edited with relevant information.
 
 ## REST API
 
@@ -107,9 +142,9 @@ User can find the vision and mission of our app in the above page. This page can
 
 User can contact the community via contact-form for some question or suggestions, accessible via my profile.
 
-# Author
+# Authors
 
-Created between March 28 - April 07 2022 as a final group project for </salt> by:
+Created between March 28 - April 07 2022 as a final group project for `</salt>` by:
 
 - Dovlat Yakshibayev
 - Leila Mahmoudi
